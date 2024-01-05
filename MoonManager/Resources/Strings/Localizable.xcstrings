@@ -1,0 +1,15 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Hello, PartyMemberView!" : {
+
+    },
+    "Hello, PartyView!" : {
+
+    },
+    "Main View~!" : {
+
+    }
+  },
+  "version" : "1.0"
+}
