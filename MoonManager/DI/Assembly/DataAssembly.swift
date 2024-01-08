@@ -11,11 +11,8 @@ import Swinject
 public struct DataAssembly: Assembly {
     
     public func assemble(container: Container) {
-        container.register(DataTransferService.self) { resolver in
-            return DefaultDataTransferService()
-        }
         container.register(PartyServiceRepository.self) { resolver in
-            let dataSource = resolver.resolve(DataTransferService.self)!
+            let dataSource = resolver.resolve(RealmDataSourceInterface.self)!
             return DefaultPartyServiceRepository(dataSource: dataSource)
         }
     }
