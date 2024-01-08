@@ -12,9 +12,10 @@ struct PartyView: View {
     
     var memberColumns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 16), count: 3)
     
-    init(viewModel: PartyViewModel) {
+    init(viewModel: PartyViewModel, id: String) {
         self.viewModel = viewModel
         self.viewModel.action(.onApear)
+        print(id)
     }
     
     var body: some View {

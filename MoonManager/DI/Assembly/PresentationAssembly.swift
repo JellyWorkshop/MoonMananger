@@ -17,25 +17,25 @@ public struct PresentationAssembly: Assembly {
             let useCase = resolver.resolve(MainUseCase.self)!
             return MainViewModel(coordinator: coordinator, mainUseCase: useCase)
         }
+
+        container.register(MainView.self) { resolver in
+            let viewModel = resolver.resolve(MainViewModel.self)!
+            return MainView(viewModel: viewModel)
+        }
         
         container.register(PartyViewModel.self) { resolver in
             let useCase = resolver.resolve(PartyUseCase.self)!
             return PartyViewModel(coordinator: coordinator, partyUseCase: useCase)
         }
         
+        container.register(PartyView.self) { resolver, id in
+            let viewModel = resolver.resolve(PartyViewModel.self)!
+            return PartyView(viewModel: viewModel, id: id)
+        }
+        
         container.register(PartyMemberViewModel.self) { resolver in
             let useCase = resolver.resolve(PartyMemberUseCase.self)!
             return PartyMemberViewModel(coordinator: coordinator, partyMemberUseCase: useCase)
-        }
-        
-        container.register(MainView.self) { resolver in
-            let viewModel = resolver.resolve(MainViewModel.self)!
-            return MainView(viewModel: viewModel)
-        }
-        
-        container.register(PartyView.self) { resolver in
-            let viewModel = resolver.resolve(PartyViewModel.self)!
-            return PartyView(viewModel: viewModel)
         }
         
         container.register(PartyMemberView.self) { resolver in

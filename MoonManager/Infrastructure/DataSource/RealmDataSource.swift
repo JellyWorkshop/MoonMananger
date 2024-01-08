@@ -9,10 +9,10 @@ import Foundation
 import RealmSwift
 
 class RealmDataSource: RealmDataSourceInterface {
-    let realm: Realm
+    var realm: Realm!
     
     init() {
-        realm = try! Realm()
+        //realm = try! Realm()
     }
     
     func create<Element>(_ element: Element) where Element: Object {
