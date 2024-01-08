@@ -7,10 +7,11 @@
 
 import Foundation
 
-public struct Party {
+public struct Party: Identifiable {
     public var id: String
     public var name: String
     public var members: [Member]
+    public var image: String?
 }
 
 extension Party: Convertable {
@@ -20,5 +21,6 @@ extension Party: Convertable {
         self.id = DTO.id
         self.name = DTO.name
         self.members = DTO.members.map { Member(DTO: $0) }
+        self.image = DTO.image
     }
 }

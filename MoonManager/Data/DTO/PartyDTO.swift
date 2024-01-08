@@ -11,4 +11,6 @@ public struct PartyDTO: Codable {
     public var id: String
     public var name: String
     public var members: [MemberDTO]
+    public var spending: [SpendingDTO]
+    public var image: String?
 }

@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct Member {
-    var id: String
-    var name: String
+public struct Member: Identifiable {
+    public var id: String
+    public var name: String
 }
 
 extension Member: Convertable {

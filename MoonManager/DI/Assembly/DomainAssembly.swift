@@ -15,5 +15,15 @@ public struct DomainAssembly: Assembly {
             let partyRepository = resolver.resolve(PartyServiceRepository.self)!
             return DefaultMainUseCase(partyRepository: partyRepository)
         }
+        
+        container.register(PartyUseCase.self) { resolver in
+            let partyRepository = resolver.resolve(PartyServiceRepository.self)!
+            return DefaultPartyUseCase(partyRepository: partyRepository)
+        }
+        
+        container.register(PartyMemberUseCase.self) { resolver in
+            let partyRepository = resolver.resolve(PartyServiceRepository.self)!
+            return DefaultPartyMemberUseCase(partyRepository: partyRepository)
+        }
     }
 }

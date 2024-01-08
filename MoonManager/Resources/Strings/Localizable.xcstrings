@@ -1,13 +1,19 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Hello, PartyMemberView!" : {
+    "%lld" : {
 
     },
-    "Hello, PartyView!" : {
+    "%lld원" : {
 
     },
-    "Main View~!" : {
+    "⛄️" : {
+
+    },
+    "이땡땡" : {
+
+    },
+    "총 금액 : " : {
 
     }
   },

@@ -20,6 +20,14 @@ public final class DefaultPartyServiceRepository: PartyServiceRepository {
         completion(.success(data))
     }
     
+    public func retrieveParty(_ completion: (Result<PartyDTO, Error>) -> Void) {
+        completion(.success(Mock.party1))
+    }
+    
+    public func retrieveSpending(_ completion: (Result<[SpendingDTO], Error>) -> Void) {
+        completion(.success(Mock.party1.spending))
+    }
+    
     public func createParty(_ request: PartyCreateDTO, completion: (Result<[PartyDTO], Error>) -> Void) {
         
     }

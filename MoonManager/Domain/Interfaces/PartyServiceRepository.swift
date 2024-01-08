@@ -9,6 +9,8 @@ import Foundation
 
 public protocol PartyServiceRepository {
     func retrievePartyList(_ completion: (Result<[PartyDTO], Error>) -> Void)
+    func retrieveParty(_ completion: (Result<PartyDTO, Error>) -> Void)
+    func retrieveSpending(_ completion: (Result<[SpendingDTO], Error>) -> Void)
     func createParty(_ request: PartyCreateDTO, completion: (Result<[PartyDTO], Error>) -> Void)
     func deleteParty(_ id: String, completion: (Result<[PartyDTO], Error>) -> Void)
     func updateParty(_ request: PartyUpdateDTO, completion: (Result<[PartyDTO], Error>) -> Void)

@@ -7,6 +7,10 @@
 
 import Foundation
 
-struct SpendingDTO {
-    
+public struct SpendingDTO: Codable {
+    var id: String
+    var manager: MemberDTO
+    var title: String
+    var cost: Int
+    var members: [MemberDTO]
 }

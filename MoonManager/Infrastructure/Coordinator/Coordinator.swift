@@ -46,9 +46,9 @@ public class Coordinator: ObservableObject, CoordinatorProtocol {
         case .main:
             injector?.resolve(MainView.self)
         case .party(let id):
-            injector?.resolve(PartyView.self, argument: id)
+            injector?.resolve(PartyView.self)
         case .partyMember(let id):
-            injector?.resolve(PartyMemberView.self, argument: id)
+            injector?.resolve(PartyMemberView.self)
         }
     }
 }
