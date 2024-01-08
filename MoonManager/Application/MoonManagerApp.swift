@@ -23,6 +23,7 @@ struct MoonManagerApp: App {
         injector.assemble(
             [  
                 RootAssembly(),
+                ServiceAssembly(),
                 DomainAssembly(),
                 DataAssembly(),
                 PresentationAssembly(coordinator: coordinator)

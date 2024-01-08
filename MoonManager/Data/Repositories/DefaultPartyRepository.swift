@@ -9,9 +9,9 @@ import Foundation
 
 public final class DefaultPartyServiceRepository: PartyServiceRepository {
     
-    private let dataSource: DataTransferService
+    private let dataSource: RealmDataSourceInterface
     
-    init(dataSource: DataTransferService) {
+    init(dataSource: RealmDataSourceInterface) {
         self.dataSource = dataSource
     }
     
