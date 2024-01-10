@@ -10,6 +10,11 @@ import Foundation
 public struct Member: Identifiable {
     public var id: String
     public var name: String
+    
+    init(id: String = UUID().uuidString, name: String = "") {
+        self.id = id
+        self.name = name
+    }
 }
 
 extension Member: Convertable {

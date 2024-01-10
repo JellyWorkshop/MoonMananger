@@ -10,9 +10,11 @@ import Foundation
 public final class DefaultPartyServiceRepository: PartyServiceRepository {
     
     private let dataSource: RealmDataSourceInterface
+    private let imageDataSource: ImageDataSourceInterface
     
     init(dataSource: RealmDataSourceInterface) {
         self.dataSource = dataSource
+        self.imageDataSource = ImageDataSource()
     }
     
     public func retrievePartyList(_ completion: (Result<[PartyDTO], Error>) -> Void) {
@@ -25,20 +27,35 @@ public final class DefaultPartyServiceRepository: PartyServiceRepository {
     }
     
     public func retrieveSpending(_ completion: (Result<[SpendingDTO], Error>) -> Void) {
-        completion(.success(Mock.party1.spending))
-    }
-    
-    public func createParty(_ request: PartyCreateDTO, completion: (Result<[PartyDTO], Error>) -> Void) {
-        
-    }
-    
-    public func deleteParty(_ id: String, completion: (Result<[PartyDTO], Error>) -> Void) {
-        
-    }
-    
-    public func updateParty(_ request: PartyUpdateDTO, completion: (Result<[PartyDTO], Error>) -> Void) {
-        
+        completion(.success(Mock.party1.spendings.map { $0 }))
     }
     
     
+    public func retrieveAllPartyList(_ completion: @escaping (Result<[PartyDTO], Error>) -> Void) {
+        DispatchQueue.global().async {
+            autoreleasepool {
+                let data: [PartyDTO] = self.dataSource.retrieveAll()
+                    .compactMap { $0 as? PartyRealmDTO }
+                    .map { realmDTO -> PartyDTO in
+                        return PartyDTO(realmDTO)
+                    }
+                completion(.success(data))
+            }
+        }
+    }
+    
+    public func createParty(_ dto: PartyDTO, completion: @escaping (Result<[PartyDTO], Error>) -> Void) {
+        DispatchQueue.global().async {
+            autoreleasepool {
+                let realmDTO = PartyRealmDTO(dto)
+                self.dataSource.create(realmDTO)
+                let data: [PartyDTO] = self.dataSource.retrieveAll()
+                    .compactMap { $0 as? PartyRealmDTO }
+                    .map { realmDTO -> PartyDTO in
+                        return PartyDTO(realmDTO)
+                    }
+                completion(.success(data))
+            }
+        }
+    }
 }

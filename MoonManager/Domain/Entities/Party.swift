@@ -21,6 +21,7 @@ extension Party: Convertable {
         self.id = DTO.id
         self.name = DTO.name
         self.members = DTO.members.map { Member(DTO: $0) }
-        self.image = DTO.image
+        self.image = ""
+        //self.image = DTO.image
     }
 }
