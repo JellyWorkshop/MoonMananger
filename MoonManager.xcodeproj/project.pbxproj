@@ -63,9 +63,9 @@
 		3B9E24772B469E2600C552D0 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9E24762B469E2600C552D0 /* CoordinatorProtocol.swift */; };
 		3BAF35AD2B47B1D800FF3BB2 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 3BAF35AC2B47B1D800FF3BB2 /* Realm */; };
 		3BAF35AF2B47B1D800FF3BB2 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3BAF35AE2B47B1D800FF3BB2 /* RealmSwift */; };
-		3BAF35B12B47B3E200FF3BB2 /* PartyRealmDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF35B02B47B3E200FF3BB2 /* PartyRealmDTO.swift */; };
 		3BAF35B42B4BC76600FF3BB2 /* RealmDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF35B32B4BC76600FF3BB2 /* RealmDataSource.swift */; };
 		3BAF35B62B4BCAEC00FF3BB2 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAF35B52B4BCAEC00FF3BB2 /* ServiceAssembly.swift */; };
+		3BBE080A2B4BE04D00711D26 /* ImageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE08092B4BE04D00711D26 /* ImageDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -137,9 +137,9 @@
 		3B9E24742B469C3500C552D0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		3B9E24762B469E2600C552D0 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		3B9E24782B46A8A800C552D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		3BAF35B02B47B3E200FF3BB2 /* PartyRealmDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyRealmDTO.swift; sourceTree = "<group>"; };
 		3BAF35B32B4BC76600FF3BB2 /* RealmDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataSource.swift; sourceTree = "<group>"; };
 		3BAF35B52B4BCAEC00FF3BB2 /* ServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
+		3BBE08092B4BE04D00711D26 /* ImageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,11 +317,10 @@
 			isa = PBXGroup;
 			children = (
 				3B9E242D2B3EBBC000C552D0 /* PartyDTO.swift */,
-				3BAF35B02B47B3E200FF3BB2 /* PartyRealmDTO.swift */,
-				3B9E24622B4539A300C552D0 /* PartyCreateDTO.swift */,
-				3B9E24642B453A3300C552D0 /* PartyUpdateDTO.swift */,
 				3B9E242F2B3EBBD100C552D0 /* MemberDTO.swift */,
 				3B9E245C2B3EC1D200C552D0 /* SpendingDTO.swift */,
+				3B9E24622B4539A300C552D0 /* PartyCreateDTO.swift */,
+				3B9E24642B453A3300C552D0 /* PartyUpdateDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -424,6 +423,7 @@
 			children = (
 				3B9E24292B3EBB2E00C552D0 /* RealmDataSourceInterface.swift */,
 				3BAF35B32B4BC76600FF3BB2 /* RealmDataSource.swift */,
+				3BBE08092B4BE04D00711D26 /* ImageDataSource.swift */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -530,6 +530,7 @@
 				3B9E24302B3EBBD100C552D0 /* MemberDTO.swift in Sources */,
 				3B9E24262B3EBA7A00C552D0 /* Member.swift in Sources */,
 				3B9E242E2B3EBBC000C552D0 /* PartyDTO.swift in Sources */,
+				3BBE080A2B4BE04D00711D26 /* ImageDataSource.swift in Sources */,
 				3B29EE072B3E6B2400D42BA2 /* DependencyInjector.swift in Sources */,
 				3B9E24222B3EBA2100C552D0 /* PartyMemberUseCase.swift in Sources */,
 				3BAF35B42B4BC76600FF3BB2 /* RealmDataSource.swift in Sources */,
@@ -560,7 +561,6 @@
 				3B9E24612B4537E000C552D0 /* Typealiases.swift in Sources */,
 				3B9E24322B3EBD1200C552D0 /* Spending.swift in Sources */,
 				3B9E246F2B46972200C552D0 /* PresentationAssembly.swift in Sources */,
-				3BAF35B12B47B3E200FF3BB2 /* PartyRealmDTO.swift in Sources */,
 				3B9B77F82B3D513D0058CA94 /* MoonManagerApp.swift in Sources */,
 				3B9E24172B3EB99400C552D0 /* MainViewModel.swift in Sources */,
 			);

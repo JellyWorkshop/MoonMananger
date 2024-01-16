@@ -22,7 +22,11 @@ extension Spending: Convertable {
         self.id = DTO.id
         self.title = DTO.title
         self.cost = DTO.cost
-        self.manager = Member(DTO: DTO.manager)
+        if let manager = DTO.manager {
+            self.manager = Member(DTO: manager)
+        } else {
+            self.manager = Member()
+        }
         self.members = DTO.members.map { Member(DTO: $0) }
     }
 }

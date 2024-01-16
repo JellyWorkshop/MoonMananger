@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import RealmSwift
 
 public struct PartyCreateDTO: Codable {
-    
+    public var name: String
+    public var members: [MemberDTO]
 }

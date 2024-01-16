@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class Mock {
     
@@ -33,20 +34,7 @@ class Mock {
                 title: "김밥",
                 cost: 17000,
                 manager: member5,
-                members: [member1, member2, member3, member4, member5, member7,
-                          MemberDTO(id: UUID().uuidString, name: "1171"),
-                          MemberDTO(id: UUID().uuidString, name: "1523"),
-                          MemberDTO(id: UUID().uuidString, name: "1264"),
-                          MemberDTO(id: UUID().uuidString, name: "1234"),
-                          MemberDTO(id: UUID().uuidString, name: "142254"),
-                          MemberDTO(id: UUID().uuidString, name: "145614"),
-                          MemberDTO(id: UUID().uuidString, name: "142554"),
-                          MemberDTO(id: UUID().uuidString, name: "145114"),
-                          MemberDTO(id: UUID().uuidString, name: "14454"),
-                          MemberDTO(id: UUID().uuidString, name: "14254"),
-                          MemberDTO(id: UUID().uuidString, name: "14754"),
-                          MemberDTO(id: UUID().uuidString, name: "14554")
-                         ]
+                members: [member1, member2, member3, member4, member5, member7]
             ),
             SpendingDTO(
                 id: UUID().uuidString,
