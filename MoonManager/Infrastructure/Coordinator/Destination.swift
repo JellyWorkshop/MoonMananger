@@ -11,4 +11,5 @@ public enum Destination: Hashable {
     case main
     case party(id: String)
     case partyMember(id: String)
+    case spendingList(id: String)
 }

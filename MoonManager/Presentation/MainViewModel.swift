@@ -10,7 +10,7 @@ import Foundation
 
 public final class MainViewModel: ViewModelable {
     enum Action {
-        case onApear
+        case onAppear
         case showParty(id: String)
     }
         
@@ -28,7 +28,7 @@ public final class MainViewModel: ViewModelable {
     
     func action(_ action: Action) {
         switch action {
-        case .onApear:
+        case .onAppear:
             mainUseCase.fetchPartyList()
         case .showParty(let id):
             coordinator.push(.party(id: id))

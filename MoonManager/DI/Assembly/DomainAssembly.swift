@@ -25,5 +25,10 @@ public struct DomainAssembly: Assembly {
             let partyRepository = resolver.resolve(PartyServiceRepository.self)!
             return DefaultPartyMemberUseCase(partyRepository: partyRepository)
         }
+        
+        container.register(SpendingListUseCase.self) { resolver in
+            let partyRepository = resolver.resolve(PartyServiceRepository.self)!
+            return DefaultSpendingListUseCase(partyRepository: partyRepository)
+        }
     }
 }

@@ -10,30 +10,71 @@ import Foundation
 class Mock {
     
     static let party1: PartyDTO = PartyDTO(
-        id: UUID().uuidString,
+        id: "1",
         name: "일본 도쿄 4박5일 🇯🇵🗼",
-        members: [member1, member2, member3, member4],
-        spending: [
+        members: [member1, member2, member3, member4, member5],
+        spendings: [
             SpendingDTO(
                 id: UUID().uuidString,
-                manager: member1,
                 title: "마라 로제 떡볶이",
-                cost: 30000,
-                members: [member1, member2, member3]
+                cost: 50000,
+                manager: member1,
+                members: [member1, member2, member5]
             ),
             SpendingDTO(
                 id: UUID().uuidString,
-                manager: member2,
                 title: "호떡",
-                cost: 4000,
+                cost: 3000,
+                manager: member2,
                 members: [member1, member2, member3, member4]
             ),
             SpendingDTO(
                 id: UUID().uuidString,
-                manager: member1,
+                title: "김밥",
+                cost: 17000,
+                manager: member5,
+                members: [member1, member2, member3, member4, member5, member7,
+                          MemberDTO(id: UUID().uuidString, name: "1171"),
+                          MemberDTO(id: UUID().uuidString, name: "1523"),
+                          MemberDTO(id: UUID().uuidString, name: "1264"),
+                          MemberDTO(id: UUID().uuidString, name: "1234"),
+                          MemberDTO(id: UUID().uuidString, name: "142254"),
+                          MemberDTO(id: UUID().uuidString, name: "145614"),
+                          MemberDTO(id: UUID().uuidString, name: "142554"),
+                          MemberDTO(id: UUID().uuidString, name: "145114"),
+                          MemberDTO(id: UUID().uuidString, name: "14454"),
+                          MemberDTO(id: UUID().uuidString, name: "14254"),
+                          MemberDTO(id: UUID().uuidString, name: "14754"),
+                          MemberDTO(id: UUID().uuidString, name: "14554")
+                         ]
+            ),
+            SpendingDTO(
+                id: UUID().uuidString,
                 title: "스타벅스",
                 cost: 12000,
+                manager: member1,
                 members: [member1, member3]
+            ),
+            SpendingDTO(
+                id: UUID().uuidString,
+                title: "코인노래방",
+                cost: 10000,
+                manager: member1,
+                members: [member1, member2, member3, member5]
+            ),
+            SpendingDTO(
+                id: UUID().uuidString,
+                title: "다트",
+                cost: 23000,
+                manager: member2,
+                members: [member1, member3, member4, member5]
+            ),
+            SpendingDTO(
+                id: UUID().uuidString,
+                title: "CGV",
+                cost: 47000,
+                manager: member5,
+                members: [member1, member3, member5]
             )
         ]
     )
@@ -42,14 +83,58 @@ class Mock {
         id: "2",
         name: "제주도 3박4일 😊",
         members: [member1, member2, member3],
-        spending: []
+        spendings: [
+            SpendingDTO(
+                id: UUID().uuidString,
+                title: "마라 로제 떡볶이",
+                cost: 30000,
+                manager: member1,
+                members: [member1, member2, member3]
+            ),
+            SpendingDTO(
+                id: UUID().uuidString,
+                title: "호떡",
+                cost: 4000,
+                manager: member2,
+                members: [member1, member2, member3, member4]
+            ),
+            SpendingDTO(
+                id: UUID().uuidString,
+                title: "스타벅스",
+                cost: 12000,
+                manager: member1,
+                members: [member1, member3]
+            )
+        ]
     )
     
     static let party3: PartyDTO = PartyDTO(
         id: "3",
         name: "태국 방콕 가보자구~~🇹🇭",
-        members: [],
-        spending: []
+        members: [member1, member2, member3, member4, member5, member6, member7],
+        spendings: [
+            SpendingDTO(
+                id: UUID().uuidString,
+                title: "마라 로제 떡볶이",
+                cost: 30000,
+                manager: member1,
+                members: [member1, member2, member3]
+            ),
+            SpendingDTO(
+                id: UUID().uuidString,
+                title: "호떡",
+                cost: 4000,
+                manager: member2,
+                members: [member1, member2, member3, member4]
+            ),
+            SpendingDTO(
+                id: UUID().uuidString,
+                title: "스타벅스",
+                cost: 12000,
+                manager: member1,
+                members: [member1, member3]
+            )
+        ]
     )
     
     static let member1: MemberDTO = MemberDTO(
@@ -61,7 +146,7 @@ class Mock {
     )
     
     static let member3: MemberDTO = MemberDTO(
-        id: UUID().uuidString, name: "죠르디"
+        id: "3", name: "죠르디"
     )
     
     static let member4: MemberDTO = MemberDTO(
@@ -69,7 +154,7 @@ class Mock {
     )
     
     static let member5: MemberDTO = MemberDTO(
-        id: UUID().uuidString, name: "어피치"
+        id: "5", name: "어피치"
     )
     
     static let member6: MemberDTO = MemberDTO(

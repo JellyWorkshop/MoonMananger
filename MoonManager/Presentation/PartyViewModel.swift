@@ -10,8 +10,9 @@ import Foundation
 
 public final class PartyViewModel: ViewModelable {
     enum Action {
-        case onApear
+        case onAppear
         case showMember(id: String)
+        case showSpendingList(id: String)
     }
     
     private var subscriptions = Set<AnyCancellable>()
@@ -19,6 +20,7 @@ public final class PartyViewModel: ViewModelable {
     var coordinator: CoordinatorProtocol
     
     @Published var party: Party? = nil
+    @Published var totalCost: Int = 0
     
     public init(coordinator: CoordinatorProtocol, partyUseCase: PartyUseCase) {
         self.coordinator = coordinator
@@ -28,10 +30,12 @@ public final class PartyViewModel: ViewModelable {
     
     func action(_ action: Action) {
         switch action {
-        case .onApear:
+        case .onAppear:
             partyUseCase.fetchParty()
         case .showMember(let id):
             coordinator.push(.partyMember(id: id))
+        case .showSpendingList(let id):
+            coordinator.push(.spendingList(id: id))
         }
     }
     
@@ -40,6 +44,14 @@ public final class PartyViewModel: ViewModelable {
             .sink { [weak self] party in
                 guard let self = self else { return }
                 self.party = party
+                
+                guard let spendings = party?.spendings else { return }
+                
+                var total: Int = 0
+                for spending in spendings {
+                    total += spending.cost
+                }
+                totalCost = total
             }
             .store(in: &subscriptions)
     }

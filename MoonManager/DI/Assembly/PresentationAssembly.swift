@@ -43,5 +43,14 @@ public struct PresentationAssembly: Assembly {
             return PartyMemberView(viewModel: viewModel)
         }
         
+        container.register(SpendingListViewModel.self) { resolver in
+            let useCase = resolver.resolve(SpendingListUseCase.self)!
+            return SpendingListViewModel(coordinator: coordinator, spendingListUseCase: useCase)
+        }
+        
+        container.register(SpendingListView.self) { resolver in
+            let viewModel = resolver.resolve(SpendingListViewModel.self)!
+            return SpendingListView(viewModel: viewModel)
+        }
     }
 }

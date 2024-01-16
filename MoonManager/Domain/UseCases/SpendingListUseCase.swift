@@ -1,19 +1,19 @@
 //
-//  PartyMemberUseCase.swift
+//  SpendingListUseCase.swift
 //  MoonManager
 //
-//  Created by cschoi on 12/29/23.
+//  Created by YEON HWANGBO on 1/12/24.
 //
 
 import Combine
 import Foundation
 
-public protocol PartyMemberUseCase {
+public protocol SpendingListUseCase {
     var spendings: AnyPublisher<[Spending], Never> { get }
     func fetchSpendings()
 }
 
-public final class DefaultPartyMemberUseCase: PartyMemberUseCase {
+public final class DefaultSpendingListUseCase: SpendingListUseCase {
     private let partyRepository: PartyServiceRepository
     private var spendingSubject = CurrentValueSubject<[Spending], Never>([])
     public var spendings: AnyPublisher<[Spending], Never> {

@@ -14,15 +14,16 @@ struct MainView: View {
     
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
-        self.viewModel.action(.onApear)
+        self.viewModel.action(.onAppear)
     }
     
     var body: some View {
         VStack {
             HStack {
                 Button {
-                    viewModel.partyList.append(Party(DTO: Mock
-                        .party1))
+                    var party = Party(DTO: Mock.party1)
+                    party.id = UUID().uuidString
+                    viewModel.partyList.append(party)
                 } label: {
                     Image(systemName: "plus")
                         .resizable()
@@ -39,14 +40,29 @@ struct MainView: View {
                     ForEach(viewModel.partyList) { info in
                         VStack {
                             Text(info.name)
+                                .font(.system(size: 16))
+                                .fontWeight(.bold)
                                 .padding()
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .aspectRatio(1, contentMode: .fill)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .foregroundStyle(.gray)
-                        )
+                        .background {
+                            if let image = info.image, image != "" {
+                                Image(image)
+                                    .resizable()
+                                    .clipShape(
+                                        RoundedRectangle(cornerRadius: 16)
+                                    )
+                                    .overlay {
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .foregroundStyle(.white)
+                                            .opacity(0.6)
+                                    }
+                            } else {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .foregroundStyle(.gray)
+                            }
+                        }
                         .onTapGesture {
                             viewModel.action(.showParty(id: info.id))
                         }
@@ -66,7 +82,9 @@ struct MainView: View {
                     )
                     .padding(1)
                     .onTapGesture {
-                        viewModel.partyList.append(Party(DTO: Mock.party1))
+                        var party = Party(DTO: Mock.party1)
+                        party.id = UUID().uuidString
+                        viewModel.partyList.append(party)
                     }
                 }
             }

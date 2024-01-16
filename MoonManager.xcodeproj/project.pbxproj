@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		262E6CF72B4F751C00AAB79D /* TotalSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262E6CF62B4F751C00AAB79D /* TotalSpending.swift */; };
+		26F7B9372B512BE10016705A /* SpendingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B9362B512BE10016705A /* SpendingListView.swift */; };
+		26F7B9392B512BF80016705A /* SpendingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B9382B512BF80016705A /* SpendingListViewModel.swift */; };
+		26F7B93B2B512C7C0016705A /* SpendingListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */; };
 		3B29EE072B3E6B2400D42BA2 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EE062B3E6B2400D42BA2 /* DependencyInjector.swift */; };
 		3B29EE0B2B3E6BBC00D42BA2 /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EE0A2B3E6BBC00D42BA2 /* RootAssembly.swift */; };
 		3B29EE0E2B3E738900D42BA2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EE0D2B3E738900D42BA2 /* Coordinator.swift */; };
@@ -78,6 +82,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		262E6CF62B4F751C00AAB79D /* TotalSpending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSpending.swift; sourceTree = "<group>"; };
+		26F7B9362B512BE10016705A /* SpendingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListView.swift; sourceTree = "<group>"; };
+		26F7B9382B512BF80016705A /* SpendingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListViewModel.swift; sourceTree = "<group>"; };
+		26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListUseCase.swift; sourceTree = "<group>"; };
 		3B29EE062B3E6B2400D42BA2 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		3B29EE0A2B3E6BBC00D42BA2 /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		3B29EE0D2B3E738900D42BA2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -194,6 +202,8 @@
 				3B9E24162B3EB99400C552D0 /* MainViewModel.swift */,
 				3B29EE112B3E73BE00D42BA2 /* PartyView.swift */,
 				3B9E24122B3EB97A00C552D0 /* PartyViewModel.swift */,
+				26F7B9362B512BE10016705A /* SpendingListView.swift */,
+				26F7B9382B512BF80016705A /* SpendingListViewModel.swift */,
 				3B29EE132B3E73CD00D42BA2 /* PartyMemberView.swift */,
 				3B9E24142B3EB98B00C552D0 /* PartyMemberViewModel.swift */,
 				3B9E24762B469E2600C552D0 /* CoordinatorProtocol.swift */,
@@ -246,6 +256,7 @@
 				3B9E24232B3EBA6700C552D0 /* Party.swift */,
 				3B9E24252B3EBA7A00C552D0 /* Member.swift */,
 				3B9E24312B3EBD1200C552D0 /* Spending.swift */,
+				262E6CF62B4F751C00AAB79D /* TotalSpending.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -296,6 +307,7 @@
 			children = (
 				3B9E241D2B3EBA0C00C552D0 /* MainUseCase.swift */,
 				3B9E241F2B3EBA1600C552D0 /* PartyUseCase.swift */,
+				26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */,
 				3B9E24212B3EBA2100C552D0 /* PartyMemberUseCase.swift */,
 			);
 			path = UseCases;
@@ -507,8 +519,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F7B9392B512BF80016705A /* SpendingListViewModel.swift in Sources */,
 				3B9E24652B453A3300C552D0 /* PartyUpdateDTO.swift in Sources */,
 				3B9E242A2B3EBB2E00C552D0 /* RealmDataSourceInterface.swift in Sources */,
+				262E6CF72B4F751C00AAB79D /* TotalSpending.swift in Sources */,
 				3B9E24132B3EB97A00C552D0 /* PartyViewModel.swift in Sources */,
 				3B9E24712B46980A00C552D0 /* DataAssembly.swift in Sources */,
 				3B9E24152B3EB98B00C552D0 /* PartyMemberViewModel.swift in Sources */,
@@ -534,9 +548,11 @@
 				3B29EE0B2B3E6BBC00D42BA2 /* RootAssembly.swift in Sources */,
 				3B9E24372B3EBDB400C552D0 /* PartyServiceRepository.swift in Sources */,
 				3B9E245D2B3EC1D200C552D0 /* SpendingDTO.swift in Sources */,
+				26F7B9372B512BE10016705A /* SpendingListView.swift in Sources */,
 				3B9E246D2B46909D00C552D0 /* AppScene.swift in Sources */,
 				3B29EE102B3E738F00D42BA2 /* Destination.swift in Sources */,
 				3B29EE0E2B3E738900D42BA2 /* Coordinator.swift in Sources */,
+				26F7B93B2B512C7C0016705A /* SpendingListUseCase.swift in Sources */,
 				3B9B77FA2B3D513D0058CA94 /* MainView.swift in Sources */,
 				3B9E24752B469C3500C552D0 /* AppState.swift in Sources */,
 				3B9E246B2B454A2700C552D0 /* AppEnvironment.swift in Sources */,
@@ -684,6 +700,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoonManager/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -714,6 +731,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoonManager/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
