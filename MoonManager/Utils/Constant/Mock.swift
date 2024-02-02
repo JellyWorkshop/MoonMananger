@@ -64,13 +64,14 @@ class Mock {
                 manager: member5,
                 members: [member1, member3, member5]
             )
-        ]
+        ],
+        image: "test_image3"
     )
     
     static let party2: PartyDTO = PartyDTO(
         id: "2",
         name: "제주도 3박4일 😊",
-        members: [member1, member2, member3],
+        members: [member1, member2, member3, member4],
         spendings: [
             SpendingDTO(
                 id: UUID().uuidString,
@@ -81,19 +82,27 @@ class Mock {
             ),
             SpendingDTO(
                 id: UUID().uuidString,
-                title: "호떡",
-                cost: 4000,
-                manager: member2,
+                title: "김밥",
+                cost: 20000,
+                manager: member1,
                 members: [member1, member2, member3, member4]
             ),
             SpendingDTO(
                 id: UUID().uuidString,
                 title: "스타벅스",
-                cost: 12000,
-                manager: member1,
-                members: [member1, member3]
+                cost: 20000,
+                manager: member2,
+                members: [member1, member2, member3, member4]
+            ),
+            SpendingDTO(
+                id: UUID().uuidString,
+                title: "코인노래방",
+                cost: 10000,
+                manager: member2,
+                members: [member2, member3]
             )
-        ]
+        ],
+        image: "test_image2"
     )
     
     static let party3: PartyDTO = PartyDTO(
@@ -122,7 +131,8 @@ class Mock {
                 manager: member1,
                 members: [member1, member3]
             )
-        ]
+        ],
+        image: "test_image"
     )
     
     static let member1: MemberDTO = MemberDTO(

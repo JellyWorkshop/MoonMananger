@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Member: Identifiable {
+public struct Member: Identifiable, Hashable {
     public var id: String
     public var name: String
     

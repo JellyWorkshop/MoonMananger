@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		262E6CF72B4F751C00AAB79D /* TotalSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262E6CF62B4F751C00AAB79D /* TotalSpending.swift */; };
+		268C97552B6CCE32000642F9 /* TotalMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268C97542B6CCE32000642F9 /* TotalMember.swift */; };
+		268C97572B6CD243000642F9 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268C97562B6CD243000642F9 /* Receipt.swift */; };
+		26E467652B63606200E40A4E /* AddPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E467642B63606200E40A4E /* AddPartyView.swift */; };
+		26E467672B63608600E40A4E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E467662B63608600E40A4E /* ImagePicker.swift */; };
 		26F7B9372B512BE10016705A /* SpendingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B9362B512BE10016705A /* SpendingListView.swift */; };
 		26F7B9392B512BF80016705A /* SpendingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B9382B512BF80016705A /* SpendingListViewModel.swift */; };
 		26F7B93B2B512C7C0016705A /* SpendingListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */; };
@@ -83,6 +87,10 @@
 
 /* Begin PBXFileReference section */
 		262E6CF62B4F751C00AAB79D /* TotalSpending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSpending.swift; sourceTree = "<group>"; };
+		268C97542B6CCE32000642F9 /* TotalMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalMember.swift; sourceTree = "<group>"; };
+		268C97562B6CD243000642F9 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		26E467642B63606200E40A4E /* AddPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPartyView.swift; sourceTree = "<group>"; };
+		26E467662B63608600E40A4E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		26F7B9362B512BE10016705A /* SpendingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListView.swift; sourceTree = "<group>"; };
 		26F7B9382B512BF80016705A /* SpendingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListViewModel.swift; sourceTree = "<group>"; };
 		26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListUseCase.swift; sourceTree = "<group>"; };
@@ -200,6 +208,8 @@
 			children = (
 				3B9B77F92B3D513D0058CA94 /* MainView.swift */,
 				3B9E24162B3EB99400C552D0 /* MainViewModel.swift */,
+				26E467642B63606200E40A4E /* AddPartyView.swift */,
+				26E467662B63608600E40A4E /* ImagePicker.swift */,
 				3B29EE112B3E73BE00D42BA2 /* PartyView.swift */,
 				3B9E24122B3EB97A00C552D0 /* PartyViewModel.swift */,
 				26F7B9362B512BE10016705A /* SpendingListView.swift */,
@@ -257,6 +267,8 @@
 				3B9E24252B3EBA7A00C552D0 /* Member.swift */,
 				3B9E24312B3EBD1200C552D0 /* Spending.swift */,
 				262E6CF62B4F751C00AAB79D /* TotalSpending.swift */,
+				268C97542B6CCE32000642F9 /* TotalMember.swift */,
+				268C97562B6CD243000642F9 /* Receipt.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -328,8 +340,8 @@
 		3B9E241C2B3EB9F700C552D0 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				3B9E24682B453DB300C552D0 /* Convertable.swift */,
 				3B9E24362B3EBDB400C552D0 /* PartyServiceRepository.swift */,
+				3B9E24682B453DB300C552D0 /* Convertable.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -532,6 +544,7 @@
 				3B9E242E2B3EBBC000C552D0 /* PartyDTO.swift in Sources */,
 				3BBE080A2B4BE04D00711D26 /* ImageDataSource.swift in Sources */,
 				3B29EE072B3E6B2400D42BA2 /* DependencyInjector.swift in Sources */,
+				26E467672B63608600E40A4E /* ImagePicker.swift in Sources */,
 				3B9E24222B3EBA2100C552D0 /* PartyMemberUseCase.swift in Sources */,
 				3BAF35B42B4BC76600FF3BB2 /* RealmDataSource.swift in Sources */,
 				3B9E24672B453B5D00C552D0 /* Mock.swift in Sources */,
@@ -542,6 +555,7 @@
 				3B9E24352B3EBDA200C552D0 /* DefaultPartyRepository.swift in Sources */,
 				3B9E243B2B3EBEF000C552D0 /* NotificationsName+.swift in Sources */,
 				3B9E24692B453DB300C552D0 /* Convertable.swift in Sources */,
+				26E467652B63606200E40A4E /* AddPartyView.swift in Sources */,
 				3B9E24732B46981200C552D0 /* DomainAssembly.swift in Sources */,
 				3B29EE122B3E73BE00D42BA2 /* PartyView.swift in Sources */,
 				3B9E24242B3EBA6700C552D0 /* Party.swift in Sources */,
@@ -553,6 +567,7 @@
 				3B9E246D2B46909D00C552D0 /* AppScene.swift in Sources */,
 				3B29EE102B3E738F00D42BA2 /* Destination.swift in Sources */,
 				3B29EE0E2B3E738900D42BA2 /* Coordinator.swift in Sources */,
+				268C97572B6CD243000642F9 /* Receipt.swift in Sources */,
 				26F7B93B2B512C7C0016705A /* SpendingListUseCase.swift in Sources */,
 				3B9B77FA2B3D513D0058CA94 /* MainView.swift in Sources */,
 				3B9E24752B469C3500C552D0 /* AppState.swift in Sources */,
@@ -563,6 +578,7 @@
 				3B9E246F2B46972200C552D0 /* PresentationAssembly.swift in Sources */,
 				3B9B77F82B3D513D0058CA94 /* MoonManagerApp.swift in Sources */,
 				3B9E24172B3EB99400C552D0 /* MainViewModel.swift in Sources */,
+				268C97552B6CCE32000642F9 /* TotalMember.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,7 +716,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoonManager/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "영수증 사진 좀 저장 할게?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "모임 배경화면으로 사진 좀 쓸게?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -731,7 +748,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoonManager/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "영수증 사진 좀 저장 할게?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "모임 배경화면으로 사진 좀 쓸게?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

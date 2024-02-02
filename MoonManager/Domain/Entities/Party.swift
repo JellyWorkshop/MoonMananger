@@ -23,7 +23,7 @@ extension Party: Convertable {
         self.name = DTO.name
         self.members = DTO.members.map { Member(DTO: $0) }
         self.spendings = DTO.spendings.map { Spending(DTO: $0) }
-//        self.image = DTO.image
-        self.image = "test_image"
+        self.image = DTO.image
+//        self.image = "test_image"
     }
 }

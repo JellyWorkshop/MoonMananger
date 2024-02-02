@@ -12,6 +12,8 @@ struct MainView: View {
     
     var partyColumns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 16), count: 2)
     
+    @State var isAddParty: Bool = false
+    
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
         self.viewModel.action(.onAppear)
@@ -21,9 +23,7 @@ struct MainView: View {
         VStack {
             HStack {
                 Button {
-                    var party = Party(DTO: Mock.party1)
-                    party.id = UUID().uuidString
-                    viewModel.partyList.append(party)
+                    isAddParty.toggle()
                 } label: {
                     Image(systemName: "plus")
                         .resizable()
@@ -42,6 +42,7 @@ struct MainView: View {
                             Text(info.name)
                                 .font(.system(size: 16))
                                 .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
                                 .padding()
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -56,7 +57,7 @@ struct MainView: View {
                                     .overlay {
                                         RoundedRectangle(cornerRadius: 16)
                                             .foregroundStyle(.white)
-                                            .opacity(0.6)
+                                            .opacity(0.5)
                                     }
                             } else {
                                 RoundedRectangle(cornerRadius: 16)
@@ -67,31 +68,16 @@ struct MainView: View {
                             viewModel.action(.showParty(id: info.id))
                         }
                     }
-                    
-                    VStack {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundStyle(.gray)
-                    }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .aspectRatio(1, contentMode: .fill)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.gray, lineWidth: 2)
-                    )
-                    .padding(1)
-                    .onTapGesture {
-                        var party = Party(DTO: Mock.party1)
-                        party.id = UUID().uuidString
-                        viewModel.partyList.append(party)
-                    }
                 }
             }
             
             
             Spacer()
         }
+        .sheet(isPresented: $isAddParty, content: {
+            AddPartyView()
+                .environmentObject(viewModel)
+        })
         .padding(.horizontal, 20)
         .padding(0.1)
         .onAppear {

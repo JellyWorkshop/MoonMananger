@@ -23,11 +23,11 @@ public final class DefaultPartyServiceRepository: PartyServiceRepository {
     }
     
     public func retrieveParty(_ completion: (Result<PartyDTO, Error>) -> Void) {
-        completion(.success(Mock.party1))
+        completion(.success(Mock.party2))
     }
     
     public func retrieveSpending(_ completion: (Result<[SpendingDTO], Error>) -> Void) {
-        completion(.success(Mock.party1.spendings.map { $0 }))
+        completion(.success(Mock.party2.spendings.map { $0 }))
     }
     
     

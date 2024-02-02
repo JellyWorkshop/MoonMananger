@@ -19,12 +19,14 @@ public class PartyDTO: Codable {
         id: String,
         name: String,
         members: [MemberDTO],
-        spendings: [SpendingDTO]
+        spendings: [SpendingDTO],
+        image: String?
     ) {
         self.id = id
         self.name = name
         self.members = members
         self.spendings = spendings
+        self.image = image
     }
     
     public init(_ realmDTO: PartyRealmDTO) {

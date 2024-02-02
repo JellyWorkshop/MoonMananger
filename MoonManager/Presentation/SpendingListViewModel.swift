@@ -17,6 +17,7 @@ public final class SpendingListViewModel: ViewModelable {
     private var spendingListUseCase: SpendingListUseCase
     var coordinator: CoordinatorProtocol
     
+    @Published var party: Party? = nil
     @Published var spendings: [Spending] = []
     
     public init(coordinator: CoordinatorProtocol, spendingListUseCase: SpendingListUseCase) {
@@ -28,11 +29,18 @@ public final class SpendingListViewModel: ViewModelable {
     func action(_ action: Action) {
         switch action {
         case .onAppear:
-            spendingListUseCase.fetchSpendings()
+            spendingListUseCase.fetchParty()
         }
     }
     
     func binding() {
+        spendingListUseCase.party
+            .sink { [weak self] party in
+                guard let self = self else { return }
+                self.party = party
+            }
+            .store(in: &subscriptions)
+        
         spendingListUseCase.spendings
             .sink { [weak self] spendings in
                 guard let self = self else { return }
