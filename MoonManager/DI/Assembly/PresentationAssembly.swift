@@ -38,9 +38,9 @@ public struct PresentationAssembly: Assembly {
             return PartyMemberViewModel(coordinator: coordinator, partyMemberUseCase: useCase)
         }
         
-        container.register(PartyMemberView.self) { resolver in
+        container.register(PartyMemberView.self) { resolver, member in
             let viewModel = resolver.resolve(PartyMemberViewModel.self)!
-            return PartyMemberView(viewModel: viewModel)
+            return PartyMemberView(viewModel: viewModel, member: member)
         }
         
         container.register(SpendingListViewModel.self) { resolver in

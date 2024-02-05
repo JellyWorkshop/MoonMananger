@@ -10,7 +10,7 @@ import Foundation
 
 public final class PartyMemberViewModel: ViewModelable {
     enum Action {
-        case onAppear
+        case onAppear(member: Member)
     }
     
     private var subscriptions = Set<AnyCancellable>()
@@ -18,12 +18,22 @@ public final class PartyMemberViewModel: ViewModelable {
     var coordinator: CoordinatorProtocol
     
     @Published var member: Member = Member(id: "", name: "")
-    @Published var spendings: [Spending] = []
+//    @Published var spendings: [Spending] = []
+//    @Published var spendingList: [Spending] = []
+//    @Published var paymentList: [Spending] = []
+//    @Published var totalSpending: Int = 0
+//    @Published var totalSpendingList: [TotalSpending] = []
+    
+    // 해당 member가 쓴 소비리스트 + 총 합계
+    // 전체 파티 정보
+    // 전체 돈 흐름 중 해당 member가 줘야할 금액
+    
+    @Published var party: Party? = nil
+    @Published var receipt: Receipt? = nil
     @Published var spendingList: [Spending] = []
     @Published var paymentList: [Spending] = []
-    @Published var totalSpending: Int = 0
-    @Published var totalSpendingList: [TotalSpending] = []
-    
+    @Published var totalCost: Int = 0
+    @Published var saveScreenshot = false
     
     public init(coordinator: CoordinatorProtocol, partyMemberUseCase: PartyMemberUseCase) {
         self.coordinator = coordinator
@@ -33,57 +43,94 @@ public final class PartyMemberViewModel: ViewModelable {
     
     func action(_ action: Action) {
         switch action {
-        case .onAppear:
-            partyMemberUseCase.fetchSpendings()
+        case .onAppear(let member):
+            self.member = member
+            partyMemberUseCase.fetchParty()
         }
     }
     
     func binding() {
-        partyMemberUseCase.spendings
-            .sink { [weak self] spendings in
+        partyMemberUseCase.party
+            .sink { [weak self] party in
                 guard let self = self else { return }
-                self.spendings = spendings
+                self.party = party
+                guard let party = party else { return }
+                let spendings = party.spendings
                 
-                var memberslist: [Spending] = []
-                spendings.forEach { spending in
-                    if spending.members.contains(where: { $0.id == self.member.id }) {
-                        memberslist.append(spending)
-                    }
-                }
-                self.spendingList = memberslist
+                var total: Int = 0
+                self.spendingList.removeAll()
+                self.paymentList.removeAll()
                 
-                var totalAmount: Int = 0
-                var totalList: [TotalSpending] = []
-                memberslist.forEach { spending in
+                for spending in spendings {
                     let spend = Int(ceil(Double(spending.cost) / Double(spending.members.count)))
-                    totalAmount += spend
                     
-                    if self.member.id != spending.manager.id {
-                        if totalList.contains(where: { $0.manager.id == spending.manager.id }) {
-                            guard var totalSpending = totalList.filter({ $0.manager.id == spending.manager.id }).first else { return }
-                            let totalCost = totalSpending.cost + spend
-                            totalSpending.cost = totalCost
-                            totalList = totalList.filter{$0.manager.id != spending.manager.id }
-                            totalList.append(totalSpending)
-                        } else {
-                            totalList.append(TotalSpending(id: UUID().uuidString, manager: spending.manager, cost: spend))
-                        }
+                    if spending.members.contains(where: { $0.id == self.member.id } ) {
+                        self.spendingList.append(spending)
+                        total += spend
                     }
                     
-                }
-                self.totalSpending = totalAmount
-                self.totalSpendingList = totalList.sorted(by: { $0.cost < $1.cost })
-                
-                var managerList: [Spending] = []
-                spendings.forEach { spending in
                     if spending.manager.id == self.member.id {
-                        managerList.append(spending)
+                        self.paymentList.append(spending)
                     }
                 }
-                self.paymentList = managerList
+                totalCost = total
                 
-                self.member = Member(DTO: Mock.member1)
+                calculationTotalSpending(party: party)
             }
             .store(in: &subscriptions)
+    }
+    
+    func calculationTotalSpending(party: Party) {
+        var managers: [TotalSpending] = []
+        
+        for spending in party.spendings {
+            let spend = Int(ceil(Double(spending.cost) / Double(spending.members.count)))
+            
+            if managers.contains(where: { $0.manager.id == spending.manager.id }) {
+                guard var manager = managers.filter({ $0.manager.id == spending.manager.id }).first else { return }
+                let totalCost = manager.cost + spend
+                manager.cost = totalCost
+                managers = managers.filter{$0.manager.id != spending.manager.id }
+                managers.append(manager)
+            } else {
+                managers.append(TotalSpending(id: UUID().uuidString, manager: spending.manager, cost: spend))
+            }
+        }
+        
+        if !managers.isEmpty, let manager: Member = managers.sorted(by: { $0.cost > $1.cost }).first?.manager {
+            var totalMembers: [TotalMember] = []
+            
+            for member in party.members {
+                for spending in party.spendings {
+                    if spending.members.contains(where: { $0.id == member.id }) {
+                        var spend: Int = 0
+                        if spending.manager.id == member.id {
+                            if spending.members.count > 1 {
+                                let tempSpend = Int(ceil(Double(spending.cost) / Double(spending.members.count))) * (spending.members.count - 1)
+                                spend = -tempSpend
+                            } else {
+                                spend = spending.cost
+                            }
+                        } else {
+                            spend = Int(ceil(Double(spending.cost) / Double(spending.members.count)))
+                        }
+                        
+                        if member.id != manager.id {
+                            if totalMembers.contains(where: { $0.member.id == member.id }) {
+                                guard var tempMember = totalMembers.filter({ $0.member.id == member.id }).first else { return }
+                                tempMember.cost = tempMember.cost + spend
+                                var tempMembers = totalMembers.filter{$0.member.id != member.id }
+                                tempMembers.append(tempMember)
+                                totalMembers = tempMembers
+                            } else {
+                                totalMembers.append(TotalMember(id: UUID().uuidString, member: member, cost: spend))
+                            }
+                        }
+                    }
+                }
+            }
+            
+            receipt = Receipt(id: UUID().uuidString, manager: manager, totalMember: totalMembers)
+        }
     }
 }

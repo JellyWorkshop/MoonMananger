@@ -10,6 +10,8 @@
 		262E6CF72B4F751C00AAB79D /* TotalSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262E6CF62B4F751C00AAB79D /* TotalSpending.swift */; };
 		268C97552B6CCE32000642F9 /* TotalMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268C97542B6CCE32000642F9 /* TotalMember.swift */; };
 		268C97572B6CD243000642F9 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268C97562B6CD243000642F9 /* Receipt.swift */; };
+		26CFD9B02B706B9F0011E454 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CFD9AF2B706B9F0011E454 /* View+.swift */; };
+		26CFD9B22B706BC20011E454 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CFD9B12B706BC20011E454 /* UIView+.swift */; };
 		26E467652B63606200E40A4E /* AddPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E467642B63606200E40A4E /* AddPartyView.swift */; };
 		26E467672B63608600E40A4E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E467662B63608600E40A4E /* ImagePicker.swift */; };
 		26F7B9372B512BE10016705A /* SpendingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B9362B512BE10016705A /* SpendingListView.swift */; };
@@ -100,6 +102,8 @@
 		262E6CF62B4F751C00AAB79D /* TotalSpending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSpending.swift; sourceTree = "<group>"; };
 		268C97542B6CCE32000642F9 /* TotalMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalMember.swift; sourceTree = "<group>"; };
 		268C97562B6CD243000642F9 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		26CFD9AF2B706B9F0011E454 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		26CFD9B12B706BC20011E454 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		26E467642B63606200E40A4E /* AddPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPartyView.swift; sourceTree = "<group>"; };
 		26E467662B63608600E40A4E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		26F7B9362B512BE10016705A /* SpendingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListView.swift; sourceTree = "<group>"; };
@@ -447,6 +451,8 @@
 			isa = PBXGroup;
 			children = (
 				3B9E243A2B3EBEF000C552D0 /* NotificationsName+.swift */,
+				26CFD9AF2B706B9F0011E454 /* View+.swift */,
+				26CFD9B12B706BC20011E454 /* UIView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -603,6 +609,7 @@
 				3B9E24652B453A3300C552D0 /* PartyUpdateDTO.swift in Sources */,
 				3B9E242A2B3EBB2E00C552D0 /* RealmDataSourceInterface.swift in Sources */,
 				262E6CF72B4F751C00AAB79D /* TotalSpending.swift in Sources */,
+				26CFD9B02B706B9F0011E454 /* View+.swift in Sources */,
 				3B9E24132B3EB97A00C552D0 /* PartyViewModel.swift in Sources */,
 				3B9E24712B46980A00C552D0 /* DataAssembly.swift in Sources */,
 				3B9E24152B3EB98B00C552D0 /* PartyMemberViewModel.swift in Sources */,
@@ -622,6 +629,7 @@
 				3B9E24202B3EBA1600C552D0 /* PartyUseCase.swift in Sources */,
 				3B9E24352B3EBDA200C552D0 /* DefaultPartyRepository.swift in Sources */,
 				3B9E243B2B3EBEF000C552D0 /* NotificationsName+.swift in Sources */,
+				26CFD9B22B706BC20011E454 /* UIView+.swift in Sources */,
 				3B9E24692B453DB300C552D0 /* Convertable.swift in Sources */,
 				26E467652B63606200E40A4E /* AddPartyView.swift in Sources */,
 				3B9E24732B46981200C552D0 /* DomainAssembly.swift in Sources */,

@@ -13,7 +13,7 @@ class Mock {
     static let party1: PartyDTO = PartyDTO(
         id: "1",
         name: "일본 도쿄 4박5일 🇯🇵🗼",
-        members: [member1, member2, member3, member4, member5],
+        members: [member1, member2, member3, member4, member5, member7],
         spendings: [
             SpendingDTO(
                 id: UUID().uuidString,
