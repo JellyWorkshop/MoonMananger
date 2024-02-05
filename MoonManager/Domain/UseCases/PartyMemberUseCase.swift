@@ -9,28 +9,26 @@ import Combine
 import Foundation
 
 public protocol PartyMemberUseCase {
-    var spendings: AnyPublisher<[Spending], Never> { get }
-    func fetchSpendings()
+    var party: AnyPublisher<Party?, Never> { get }
+    func fetchParty()
 }
 
 public final class DefaultPartyMemberUseCase: PartyMemberUseCase {
     private let partyRepository: PartyServiceRepository
-    private var spendingSubject = CurrentValueSubject<[Spending], Never>([])
-    public var spendings: AnyPublisher<[Spending], Never> {
-        return spendingSubject.eraseToAnyPublisher()
+    private var partySubject = CurrentValueSubject<Party?, Never>(nil)
+    public var party: AnyPublisher<Party?, Never> {
+        return partySubject.eraseToAnyPublisher()
     }
     
     public init(partyRepository: PartyServiceRepository) {
         self.partyRepository = partyRepository
     }
     
-    public func fetchSpendings() {
-        partyRepository.retrieveSpending { result in
+    public func fetchParty() {
+        partyRepository.retrieveParty { result in
             switch result {
             case .success(let data):
-                spendingSubject.send(
-                    data.map { Spending(DTO: $0) }
-                )
+                partySubject.send(Party(DTO: data))
             case .failure(let error):
                 print(error)
             }

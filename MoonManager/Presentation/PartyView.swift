@@ -131,7 +131,7 @@ struct PartyView: View {
                                         .opacity(0.1)
                                 )
                                 .onTapGesture {
-                                    viewModel.action(.showMember(id: info.id))
+                                    viewModel.action(.showMember(member: info))
                                 }
                             }
                             
@@ -448,6 +448,7 @@ struct PartyView: View {
                             .background(
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(.yellow, lineWidth: 2)
+
                             )
                             
                             Button {
@@ -621,7 +622,7 @@ struct ReceiptView: View {
                     }
                     
                     HStack {
-                        Text("총 합계 : ")
+                        Text("합계 : ")
                             .fontWeight(.bold)
                         
                         Spacer()
@@ -633,17 +634,54 @@ struct ReceiptView: View {
                     .padding(.bottom, 10)
                     
                     if let receipt = viewModel.receipt {
-                        VStack {
+                        VStack(alignment: .leading, spacing: 5) {
                             ForEach(receipt.totalMember) { info in
-                                if info.cost < 0 {
-                                    Text("\(receipt.manager.name) -> \(info.member.name) : \(abs(info.cost))원")
-                                } else {
-                                    Text("\(info.member.name) -> \(receipt.manager.name) : \(info.cost)원")
+                                if info.cost != 0 {
+                                     HStack(alignment: .center, spacing: 2) {
+                                        if info.cost < 0 {
+                                            Spacer()
+                                            
+                                            HStack(spacing: 0) {
+                                                Text("\(receipt.manager.name)")
+                                                    .fontWeight(.bold)
+                                                Text("님!")
+                                            }
+                                            
+                                            HStack(spacing: 0) {
+                                                Text("\(info.member.name)")
+                                                    .fontWeight(.bold)
+                                                Text("님께")
+                                            }
+                                            
+                                            Text("\(abs(info.cost))원")
+                                                .fontWeight(.bold)
+                                            Text("보내주세요💸")
+                                        } else {
+                                            Spacer()
+                                            
+                                            HStack(spacing: 0) {
+                                                Text("\(info.member.name)")
+                                                    .fontWeight(.bold)
+                                                Text("님!")
+                                            }
+                                            
+                                            HStack(spacing: 0) {
+                                                Text("\(receipt.manager.name)")
+                                                    .fontWeight(.bold)
+                                                Text("님께")
+                                            }
+                                            
+                                            Text("\(info.cost)원")
+                                                .fontWeight(.bold)
+                                            Text("보내주세요💸")
+                                        }
+                                    }
                                 }
                             }
                             .font(.system(size: 12))
+                            .padding(.bottom, 5)
                             
-                            Text("*총무가 모든 금액을 받고 따로 결제한 건에 대해 다시 전달해줘요")
+                            Text("*총무가 모든 금액을 받고 따로 결제한 건에 대해 다시 전달해줘요!")
                                 .foregroundStyle(.gray)
                                 .font(.system(size: 10))
                         }
@@ -685,28 +723,5 @@ struct ReceiptView: View {
                 break
             }
         })
-    }
-}
-
-extension UIView {
-    var screenShot: UIImage {
-        let rect = self.bounds
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-        let context: CGContext = UIGraphicsGetCurrentContext()!
-        context.interpolationQuality = .high
-        self.layer.render(in: context)
-        let capturedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        return capturedImage
-    }
-}
-
-extension View {
-    func takeScreenshot(origin: CGPoint, size: CGSize) -> UIImage {
-        let window = UIWindow(frame: CGRect(origin: origin, size: size))
-        let hosting = UIHostingController(rootView: self)
-        hosting.view.frame = window.frame
-        window.addSubview(hosting.view)
-        window.makeKeyAndVisible()
-        return hosting.view.screenShot
     }
 }

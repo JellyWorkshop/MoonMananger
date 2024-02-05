@@ -11,7 +11,7 @@ import Foundation
 public final class PartyViewModel: ViewModelable {
     enum Action {
         case onAppear
-        case showMember(id: String)
+        case showMember(member: Member)
         case showSpendingList(id: String)
     }
     
@@ -34,8 +34,8 @@ public final class PartyViewModel: ViewModelable {
         switch action {
         case .onAppear:
             partyUseCase.fetchParty()
-        case .showMember(let id):
-            coordinator.push(.partyMember(id: id))
+        case .showMember(let member):
+            coordinator.push(.partyMember(member: member))
         case .showSpendingList(let id):
             coordinator.push(.spendingList(id: id))
         }
