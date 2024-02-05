@@ -15,6 +15,7 @@
 		26F7B9372B512BE10016705A /* SpendingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B9362B512BE10016705A /* SpendingListView.swift */; };
 		26F7B9392B512BF80016705A /* SpendingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B9382B512BF80016705A /* SpendingListViewModel.swift */; };
 		26F7B93B2B512C7C0016705A /* SpendingListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */; };
+		3B1B3C242B6CE1E7008247B9 /* MoonManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B3C232B6CE1E7008247B9 /* MoonManagerTests.swift */; };
 		3B29EE072B3E6B2400D42BA2 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EE062B3E6B2400D42BA2 /* DependencyInjector.swift */; };
 		3B29EE0B2B3E6BBC00D42BA2 /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EE0A2B3E6BBC00D42BA2 /* RootAssembly.swift */; };
 		3B29EE0E2B3E738900D42BA2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EE0D2B3E738900D42BA2 /* Coordinator.swift */; };
@@ -72,6 +73,16 @@
 		3BBE080A2B4BE04D00711D26 /* ImageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBE08092B4BE04D00711D26 /* ImageDataSource.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3B1B3C252B6CE1E7008247B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B9B77EC2B3D513D0058CA94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B9B77F32B3D513D0058CA94;
+			remoteInfo = MoonManager;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		3B29EE222B3EA33400D42BA2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -94,6 +105,8 @@
 		26F7B9362B512BE10016705A /* SpendingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListView.swift; sourceTree = "<group>"; };
 		26F7B9382B512BF80016705A /* SpendingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListViewModel.swift; sourceTree = "<group>"; };
 		26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListUseCase.swift; sourceTree = "<group>"; };
+		3B1B3C212B6CE1E7008247B9 /* MoonManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoonManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B1B3C232B6CE1E7008247B9 /* MoonManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonManagerTests.swift; sourceTree = "<group>"; };
 		3B29EE062B3E6B2400D42BA2 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		3B29EE0A2B3E6BBC00D42BA2 /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		3B29EE0D2B3E738900D42BA2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -151,6 +164,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3B1B3C1E2B6CE1E7008247B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B9B77F12B3D513D0058CA94 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -164,6 +184,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B1B3C222B6CE1E7008247B9 /* MoonManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				3B1B3C232B6CE1E7008247B9 /* MoonManagerTests.swift */,
+			);
+			path = MoonManagerTests;
+			sourceTree = "<group>";
+		};
 		3B29EE052B3E6B0F00D42BA2 /* DI */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				3B9B77F62B3D513D0058CA94 /* MoonManager */,
+				3B1B3C222B6CE1E7008247B9 /* MoonManagerTests */,
 				3B9B77F52B3D513D0058CA94 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -285,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				3B9B77F42B3D513D0058CA94 /* MoonManager.app */,
+				3B1B3C212B6CE1E7008247B9 /* MoonManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -443,6 +473,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3B1B3C202B6CE1E7008247B9 /* MoonManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B1B3C292B6CE1E7008247B9 /* Build configuration list for PBXNativeTarget "MoonManagerTests" */;
+			buildPhases = (
+				3B1B3C1D2B6CE1E7008247B9 /* Sources */,
+				3B1B3C1E2B6CE1E7008247B9 /* Frameworks */,
+				3B1B3C1F2B6CE1E7008247B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B1B3C262B6CE1E7008247B9 /* PBXTargetDependency */,
+			);
+			name = MoonManagerTests;
+			productName = MoonManagerTests;
+			productReference = 3B1B3C212B6CE1E7008247B9 /* MoonManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3B9B77F32B3D513D0058CA94 /* MoonManager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B9B78022B3D513E0058CA94 /* Build configuration list for PBXNativeTarget "MoonManager" */;
@@ -476,6 +524,10 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					3B1B3C202B6CE1E7008247B9 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 3B9B77F32B3D513D0058CA94;
+					};
 					3B9B77F32B3D513D0058CA94 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -500,11 +552,19 @@
 			projectRoot = "";
 			targets = (
 				3B9B77F32B3D513D0058CA94 /* MoonManager */,
+				3B1B3C202B6CE1E7008247B9 /* MoonManagerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3B1B3C1F2B6CE1E7008247B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B9B77F22B3D513D0058CA94 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -527,6 +587,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3B1B3C1D2B6CE1E7008247B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B1B3C242B6CE1E7008247B9 /* MoonManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B9B77F02B3D513D0058CA94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -584,7 +652,59 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3B1B3C262B6CE1E7008247B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B9B77F32B3D513D0058CA94 /* MoonManager */;
+			targetProxy = 3B1B3C252B6CE1E7008247B9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		3B1B3C272B6CE1E7008247B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZGFAWH8RN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jellabean.MoonManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoonManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MoonManager";
+			};
+			name = Debug;
+		};
+		3B1B3C282B6CE1E7008247B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7ZGFAWH8RN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jellabean.MoonManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoonManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MoonManager";
+			};
+			name = Release;
+		};
 		3B9B78002B3D513E0058CA94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -771,6 +891,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3B1B3C292B6CE1E7008247B9 /* Build configuration list for PBXNativeTarget "MoonManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B1B3C272B6CE1E7008247B9 /* Debug */,
+				3B1B3C282B6CE1E7008247B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3B9B77EF2B3D513D0058CA94 /* Build configuration list for PBXProject "MoonManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
