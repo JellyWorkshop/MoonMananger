@@ -17,7 +17,9 @@
 		26F7B9372B512BE10016705A /* SpendingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B9362B512BE10016705A /* SpendingListView.swift */; };
 		26F7B9392B512BF80016705A /* SpendingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B9382B512BF80016705A /* SpendingListViewModel.swift */; };
 		26F7B93B2B512C7C0016705A /* SpendingListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */; };
-		3B1B3C242B6CE1E7008247B9 /* MoonManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B3C232B6CE1E7008247B9 /* MoonManagerTests.swift */; };
+		3B1B3C242B6CE1E7008247B9 /* PartyUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B3C232B6CE1E7008247B9 /* PartyUseCaseTests.swift */; };
+		3B298F9D2B73695C00AAD5F4 /* MockPartyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B298F9C2B73695C00AAD5F4 /* MockPartyRepository.swift */; };
+		3B298F9F2B736A7200AAD5F4 /* RealmDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B298F9E2B736A7200AAD5F4 /* RealmDataSourceTests.swift */; };
 		3B29EE072B3E6B2400D42BA2 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EE062B3E6B2400D42BA2 /* DependencyInjector.swift */; };
 		3B29EE0B2B3E6BBC00D42BA2 /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EE0A2B3E6BBC00D42BA2 /* RootAssembly.swift */; };
 		3B29EE0E2B3E738900D42BA2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EE0D2B3E738900D42BA2 /* Coordinator.swift */; };
@@ -110,7 +112,9 @@
 		26F7B9382B512BF80016705A /* SpendingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListViewModel.swift; sourceTree = "<group>"; };
 		26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListUseCase.swift; sourceTree = "<group>"; };
 		3B1B3C212B6CE1E7008247B9 /* MoonManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoonManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B1B3C232B6CE1E7008247B9 /* MoonManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonManagerTests.swift; sourceTree = "<group>"; };
+		3B1B3C232B6CE1E7008247B9 /* PartyUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyUseCaseTests.swift; sourceTree = "<group>"; };
+		3B298F9C2B73695C00AAD5F4 /* MockPartyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPartyRepository.swift; sourceTree = "<group>"; };
+		3B298F9E2B736A7200AAD5F4 /* RealmDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataSourceTests.swift; sourceTree = "<group>"; };
 		3B29EE062B3E6B2400D42BA2 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		3B29EE0A2B3E6BBC00D42BA2 /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		3B29EE0D2B3E738900D42BA2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -191,9 +195,27 @@
 		3B1B3C222B6CE1E7008247B9 /* MoonManagerTests */ = {
 			isa = PBXGroup;
 			children = (
-				3B1B3C232B6CE1E7008247B9 /* MoonManagerTests.swift */,
+				3B298F9B2B7368CC00AAD5F4 /* Domain */,
+				3B298F9A2B7368C500AAD5F4 /* Infrastructure */,
 			);
 			path = MoonManagerTests;
+			sourceTree = "<group>";
+		};
+		3B298F9A2B7368C500AAD5F4 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				3B298F9E2B736A7200AAD5F4 /* RealmDataSourceTests.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		3B298F9B2B7368CC00AAD5F4 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				3B298F9C2B73695C00AAD5F4 /* MockPartyRepository.swift */,
+				3B1B3C232B6CE1E7008247B9 /* PartyUseCaseTests.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		3B29EE052B3E6B0F00D42BA2 /* DI */ = {
@@ -597,7 +619,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B1B3C242B6CE1E7008247B9 /* MoonManagerTests.swift in Sources */,
+				3B1B3C242B6CE1E7008247B9 /* PartyUseCaseTests.swift in Sources */,
+				3B298F9F2B736A7200AAD5F4 /* RealmDataSourceTests.swift in Sources */,
+				3B298F9D2B73695C00AAD5F4 /* MockPartyRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,7 +699,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7ZGFAWH8RN;
+				DEVELOPMENT_TEAM = 9H9825MDB8;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -697,7 +721,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7ZGFAWH8RN;
+				DEVELOPMENT_TEAM = 9H9825MDB8;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;

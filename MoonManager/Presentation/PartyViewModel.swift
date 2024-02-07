@@ -46,7 +46,6 @@ public final class PartyViewModel: ViewModelable {
             .sink { [weak self] party in
                 guard let self = self else { return }
                 self.party = party
-                guard let party = party else { return }
                 let spendings = party.spendings
                 
                 var total: Int = 0

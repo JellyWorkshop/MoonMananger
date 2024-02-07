@@ -21,9 +21,12 @@ public struct DomainAssembly: Assembly {
             return DefaultPartyUseCase(partyRepository: partyRepository)
         }
         
-        container.register(PartyMemberUseCase.self) { resolver in
+        container.register(PartyMemberUseCase.self) { resolver, member in
             let partyRepository = resolver.resolve(PartyServiceRepository.self)!
-            return DefaultPartyMemberUseCase(partyRepository: partyRepository)
+            return DefaultPartyMemberUseCase(
+                member: member,
+                partyRepository: partyRepository
+            )
         }
         
         container.register(SpendingListUseCase.self) { resolver in
