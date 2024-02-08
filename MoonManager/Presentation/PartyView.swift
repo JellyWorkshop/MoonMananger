@@ -25,6 +25,8 @@ struct PartyView: View {
     let amountList: [Int] = [100000, 50000, 10000, 1000]
     @State var excludeList: [Member] = []
     
+    @State var longPressMemberID: String = ""
+    
     var partyID: String = ""
     
     var memberColumns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 16), count: 3)
@@ -98,23 +100,68 @@ struct PartyView: View {
                         LazyVGrid(columns: memberColumns, spacing: 16) {
                             ForEach(viewModel.party?.members ?? []) { info in
                                 VStack(spacing: 5) {
-                                    HStack {
-                                        Circle()
-                                            .frame(width: 10, height: 10)
-                                            .foregroundStyle(.cyan)
-                                            .shadow(radius: 2)
+                                    if longPressMemberID == info.id {
+                                        VStack(spacing: 10) {
+                                            Button {
+                                                print("### 변경")
+                                            } label: {
+                                                Text("변경")
+                                                    .foregroundStyle(.yellow)
+                                                    .frame(maxWidth: .infinity, maxHeight: 40)
+                                            }
+                                            .buttonStyle(.plain)
+                                            .background(
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .stroke(.yellow, lineWidth: 2)
+                                            )
+                                            .onLongPressGesture {
+                                                print("### onLongPressGesture \(info.id)")
+                                                if longPressMemberID == info.id {
+                                                    longPressMemberID = ""
+                                                } else {
+                                                    longPressMemberID = info.id
+                                                }
+                                            }
+                                            
+                                            Button {
+                                                print("### 삭제")
+                                            } label: {
+                                                Text("삭제")
+                                                    .foregroundStyle(.white)
+                                                    .frame(maxWidth: .infinity, maxHeight: 40)
+                                            }
+                                            .buttonStyle(.plain)
+                                            .background(
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .foregroundStyle(.yellow)
+                                            )
+                                            .onLongPressGesture {
+                                                if longPressMemberID == info.id {
+                                                    longPressMemberID = ""
+                                                } else {
+                                                    longPressMemberID = info.id
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        HStack {
+                                            Circle()
+                                                .frame(width: 10, height: 10)
+                                                .foregroundStyle(.cyan)
+                                                .shadow(radius: 2)
+                                            
+                                            Spacer()
+                                        }
                                         
                                         Spacer()
-                                    }
-                                    
-                                    Spacer()
-                                    
-                                    HStack {
-                                        Spacer()
                                         
-                                        Text(info.name)
-                                            .font(.system(size: 20))
-                                            .fontWeight(.bold)
+                                        HStack {
+                                            Spacer()
+                                            
+                                            Text(info.name)
+                                                .font(.system(size: 20))
+                                                .fontWeight(.bold)
+                                        }
                                     }
                                 }
                                 .padding(12)
@@ -133,6 +180,15 @@ struct PartyView: View {
                                 .onTapGesture {
                                     viewModel.action(.showMember(member: info))
                                 }
+                                .onLongPressGesture {
+                                    print("### onLongPressGesture \(info.id)")
+                                    if longPressMemberID == info.id {
+                                        longPressMemberID = ""
+                                    } else {
+                                        longPressMemberID = info.id
+                                    }
+                                }
+                                .animation(.spring(duration: 0.3), value: longPressMemberID)
                             }
                             
                             VStack {

@@ -291,12 +291,8 @@ struct PersonalReceiptView: View {
                     }
                     .padding(.vertical, 30)
                     
-                    Rectangle()
-                        .stroke(.yellow, style: StrokeStyle(lineWidth: 1, dash: [10]))
-                        .frame(height: 0)
-                    
                     ForEach(viewModel.spendingList) { spending in
-                        VStack(spacing: 8) {
+                        VStack {
                             HStack(spacing: 2) {
                                 Text(spending.title)
                                     .font(.system(size: 12))

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		262523D52B71CCEE00D5264B /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262523D42B71CCEE00D5264B /* Line.swift */; };
 		262E6CF72B4F751C00AAB79D /* TotalSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262E6CF62B4F751C00AAB79D /* TotalSpending.swift */; };
 		268C97552B6CCE32000642F9 /* TotalMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268C97542B6CCE32000642F9 /* TotalMember.swift */; };
 		268C97572B6CD243000642F9 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268C97562B6CD243000642F9 /* Receipt.swift */; };
@@ -88,6 +89,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		262523D42B71CCEE00D5264B /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		262E6CF62B4F751C00AAB79D /* TotalSpending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSpending.swift; sourceTree = "<group>"; };
 		268C97542B6CCE32000642F9 /* TotalMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalMember.swift; sourceTree = "<group>"; };
 		268C97562B6CD243000642F9 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			children = (
 				3B9E24602B4537E000C552D0 /* Typealiases.swift */,
 				3B9E24662B453B5D00C552D0 /* Mock.swift */,
+				262523D42B71CCEE00D5264B /* Line.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				3B9E245D2B3EC1D200C552D0 /* SpendingDTO.swift in Sources */,
 				26F7B9372B512BE10016705A /* SpendingListView.swift in Sources */,
 				3B9E246D2B46909D00C552D0 /* AppScene.swift in Sources */,
+				262523D52B71CCEE00D5264B /* Line.swift in Sources */,
 				3B29EE102B3E738F00D42BA2 /* Destination.swift in Sources */,
 				3B29EE0E2B3E738900D42BA2 /* Coordinator.swift in Sources */,
 				268C97572B6CD243000642F9 /* Receipt.swift in Sources */,

@@ -12,6 +12,7 @@ public final class MainViewModel: ViewModelable {
     enum Action {
         case onAppear
         case showParty(id: String)
+        case createParty(party: Party)
     }
         
     private var subscriptions = Set<AnyCancellable>()
@@ -32,6 +33,8 @@ public final class MainViewModel: ViewModelable {
             mainUseCase.fetchPartyList()
         case .showParty(let id):
             coordinator.push(.party(id: id))
+        case .createParty(let party):
+            mainUseCase.createParty(party)
         }
     }
     

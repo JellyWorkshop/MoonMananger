@@ -16,6 +16,9 @@ struct AddPartyView: View {
     @State var openPhoto: Bool = false
     @State private var mainImage: UIImage? = nil
     
+    var colors: [Color] = [.black, .white]
+    @State var selectedColor: Color = .black
+    
     var body: some View {
         VStack(spacing: 20) {
             ZStack {
@@ -26,17 +29,17 @@ struct AddPartyView: View {
                     .frame(width: 200, height: 200)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
-                            .stroke(.white, lineWidth: 3)
-                            .shadow(radius: 2)
+                            .stroke(.gray, style: StrokeStyle(lineWidth: 5, dash: [5]))
                             .overlay(
                                 VStack {
                                     Text(titleText)
                                         .font(.system(size: 16))
+                                        .foregroundStyle(selectedColor)
                                         .fontWeight(.bold)
                                         .multilineTextAlignment(.center)
                                         .padding()
                                 }
-                                    .padding(10)
+                                .padding(10)
                             )
                     )
                     .background {
@@ -106,23 +109,47 @@ struct AddPartyView: View {
             
             Text("어떤 모임인가요?")
             
-            TextField(text: $titleText) {
-                Text("먹짱들 제주도 뿌셔뿌셔")
+            HStack {
+                TextField(text: $titleText) {
+                    Text("먹짱들 제주도 뿌셔뿌셔")
+                }
+                .multilineTextAlignment(.center)
+                .padding(5)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(.yellow, lineWidth: 2)
+                )
+                
+                Spacer()
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 7) {
+                        ForEach(colors, id: \.self) { color in
+                            Circle()
+                                .foregroundStyle(color)
+                                .frame(width: 25, height: 25)
+                                .shadow(radius: 2)
+                                .onTapGesture {
+                                    selectedColor = color
+                                }
+                        }
+                    }
+                }
+                .frame(width: 60, height: 40)
             }
-            .multilineTextAlignment(.center)
-            .padding(5)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(.yellow, lineWidth: 2)
-            )
             
             Button {
                 guard !titleText.isEmpty else {
                     print("XXX")
                     return
                 }
-                let party = Party(id: UUID().uuidString, name: titleText, members: [], spendings: [])
+                let id = UUID().uuidString
+                let party = Party(id: id, name: titleText, members: [], spendings: [])
+                if let image = mainImage {
+                    ImageDataSource().saveImage(imageName: id, image: image)
+                }
                 viewModel.partyList.append(party)
+//                viewModel.action(.createParty(party: party))
                 dismiss()
             } label: {
                 Text("추가")

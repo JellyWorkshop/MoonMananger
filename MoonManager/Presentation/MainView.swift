@@ -48,8 +48,8 @@ struct MainView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .aspectRatio(1, contentMode: .fill)
                         .background {
-                            if let image = info.image, image != "" {
-                                Image(image)
+                            if let image = ImageDataSource().loadImage(imageName: info.id) {
+                                Image(uiImage: image)
                                     .resizable()
                                     .clipShape(
                                         RoundedRectangle(cornerRadius: 16)
@@ -71,12 +71,12 @@ struct MainView: View {
                 }
             }
             
-            
             Spacer()
         }
         .sheet(isPresented: $isAddParty, content: {
             AddPartyView()
                 .environmentObject(viewModel)
+                .presentationDetents([.medium])
         })
         .padding(.horizontal, 20)
         .padding(0.1)
