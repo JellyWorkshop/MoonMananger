@@ -33,15 +33,17 @@ public struct PresentationAssembly: Assembly {
             return PartyView(viewModel: viewModel, id: id)
         }
         
-        container.register(PartyMemberViewModel.self) { resolver in
-            let useCase = resolver.resolve(PartyMemberUseCase.self)!
+        container.register(PartyMemberViewModel.self) { resolver, member in
+            let member: Member = member
+            let useCase = resolver.resolve(PartyMemberUseCase.self, argument: member)!
             return PartyMemberViewModel(coordinator: coordinator, partyMemberUseCase: useCase)
-        }
+        }.inObjectScope(.graph)
         
         container.register(PartyMemberView.self) { resolver, member in
-            let viewModel = resolver.resolve(PartyMemberViewModel.self)!
+            let member: Member = member
+            let viewModel = resolver.resolve(PartyMemberViewModel.self, argument: member)!
             return PartyMemberView(viewModel: viewModel, member: member)
-        }
+        }.inObjectScope(.graph)
         
         container.register(SpendingListViewModel.self) { resolver in
             let useCase = resolver.resolve(SpendingListUseCase.self)!

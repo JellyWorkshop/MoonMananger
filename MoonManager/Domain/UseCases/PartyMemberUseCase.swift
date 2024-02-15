@@ -14,13 +14,15 @@ public protocol PartyMemberUseCase {
 }
 
 public final class DefaultPartyMemberUseCase: PartyMemberUseCase {
+    private let memeber: Member
     private let partyRepository: PartyServiceRepository
     private var partySubject = CurrentValueSubject<Party?, Never>(nil)
     public var party: AnyPublisher<Party?, Never> {
         return partySubject.eraseToAnyPublisher()
     }
     
-    public init(partyRepository: PartyServiceRepository) {
+    public init(member: Member, partyRepository: PartyServiceRepository) {
+        self.memeber = member
         self.partyRepository = partyRepository
     }
     

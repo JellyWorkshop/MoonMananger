@@ -12,7 +12,7 @@ public struct TotalSpending: Identifiable {
     public var manager: Member
     public var cost: Int
     
-    init(id: String,
+    init(id: String = UUID().uuidString,
          manager: Member,
          cost: Int = 0) {
         self.id = id
