@@ -12,8 +12,14 @@ public class RealmDataSource: RealmDataSourceInterface {
     private var realm: Realm
     
     public init() {
-        let config = Realm.Configuration(schemaVersion: 2)
-        Realm.Configuration.defaultConfiguration = config
+        let objectTypes = [
+            PartyRealmDTO.self,
+            MemberRealmDTO.self,
+            SpendingRealmDTO.self
+        ]
+        let config = Realm.Configuration(schemaVersion: 1,
+                                         deleteRealmIfMigrationNeeded: true,
+                                         objectTypes: objectTypes)
         realm = try! Realm(configuration: config)
     }
     
@@ -23,15 +29,19 @@ public class RealmDataSource: RealmDataSourceInterface {
         }
     }
     
-    public func retrieveAll<Element>() -> [Element] where Element: Object {
-        realm.objects(Element.self).map { $0 }
+    public func retrievePartyAll() -> Results<PartyRealmDTO> {
+        realm.objects(PartyRealmDTO.self)
     }
     
-    public func retrieve<Element, Key>(key: Key) -> Element? where Element: Object {
-        realm.object(ofType: Element.self, forPrimaryKey: key)
+    public func retrieveParty(key: String) -> PartyRealmDTO? {
+        realm.object(ofType: PartyRealmDTO.self, forPrimaryKey: key)
     }
     
-    public func retrieve<Element>(query: String) -> [Element] where Element: Object {        
+    public func retrieveMember(key: String) -> MemberRealmDTO? {
+        realm.object(ofType: MemberRealmDTO.self, forPrimaryKey: key)
+    }
+    
+    public func retrieve<Element>(query: String) -> [Element] where Element: Object {
         realm.objects(Element.self).filter(query).map { $0 }
     }
     
@@ -52,9 +62,26 @@ public class RealmDataSource: RealmDataSourceInterface {
         }
     }
     
+    
     public func delete<Element>(_ element: Element) where Element: Object {
         try! realm.write {
             realm.delete(element)
+        }
+    }
+    
+    public func deleteMember(key: String) {
+        if let object = realm.object(ofType: MemberRealmDTO.self, forPrimaryKey: key) {
+            try! realm.write {
+                realm.delete(object)
+            }
+        }
+    }
+    
+    public func deleteSpending(key: String) {
+        if let object = realm.object(ofType: SpendingRealmDTO.self, forPrimaryKey: key) {
+            try! realm.write {
+                realm.delete(object)
+            }
         }
     }
     

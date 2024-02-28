@@ -11,7 +11,10 @@ public struct Member: Identifiable, Hashable {
     public var id: String
     public var name: String
     
-    init(id: String = UUID().uuidString, name: String = "") {
+    init(
+        id: String = UUID().uuidString,
+        name: String = ""
+    ) {
         self.id = id
         self.name = name
     }

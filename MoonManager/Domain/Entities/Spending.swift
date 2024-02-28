@@ -13,6 +13,20 @@ public struct Spending: Identifiable {
     public var cost: Int
     public var manager: Member
     public var members: [Member]
+    
+    init(
+        id: String = UUID().uuidString,
+        title: String,
+        cost: Int,
+        manager: Member,
+        members: [Member]
+    ) {
+        self.id = id
+        self.title = title
+        self.cost = cost
+        self.manager = manager
+        self.members = members
+    }
 }
 
 extension Spending: Convertable {

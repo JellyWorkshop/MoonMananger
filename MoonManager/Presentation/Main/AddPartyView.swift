@@ -149,7 +149,7 @@ struct AddPartyView: View {
                     ImageDataSource().saveImage(imageName: id, image: image)
                 }
                 viewModel.partyList.append(party)
-//                viewModel.action(.createParty(party: party))
+                viewModel.action(.createParty(party: party))
                 dismiss()
             } label: {
                 Text("추가")

@@ -22,20 +22,35 @@ public final class DefaultPartyServiceRepository: PartyServiceRepository {
         completion(.success(data))
     }
     
-    public func retrieveParty(_ completion: (Result<PartyDTO, Error>) -> Void) {
-        completion(.success(Mock.party2))
+    public func retrieveParty(id: String, _ completion: @escaping (Result<PartyDTO, Error>) -> Void) {
+        DispatchQueue.main.async {
+            autoreleasepool {
+                if let data = self.dataSource.retrieveParty(key: id) {
+                    completion(.success(PartyDTO(data)))
+                }
+            }
+        }
     }
     
-    public func retrieveSpending(_ completion: (Result<[SpendingDTO], Error>) -> Void) {
-        completion(.success(Mock.party2.spendings.map { $0 }))
+    public func retrieveMember(id: String, _ completion: @escaping (Result<MemberDTO, Error>) -> Void) {
+        DispatchQueue.main.async {
+            autoreleasepool {
+                if let data = self.dataSource.retrieveMember(key: id) {
+                    completion(.success(MemberDTO(data)))
+                }
+            }
+        }
     }
     
+//    public func retrieveSpending(_ completion: (Result<[SpendingDTO], Error>) -> Void) {
+//        completion(.success(Mock.party2.spendings.map { $0 }))
+//    }
     
     public func retrieveAllPartyList(_ completion: @escaping (Result<[PartyDTO], Error>) -> Void) {
-        DispatchQueue.global().async {
+        DispatchQueue.main.async {
             autoreleasepool {
-                let data: [PartyDTO] = self.dataSource.retrieveAll()
-                    .compactMap { $0 as? PartyRealmDTO }
+                let data: [PartyDTO] = self.dataSource.retrievePartyAll()
+//                    .compactMap { $0 as? PartyRealmDTO }
                     .map { realmDTO -> PartyDTO in
                         return PartyDTO(realmDTO)
                     }
@@ -45,16 +60,54 @@ public final class DefaultPartyServiceRepository: PartyServiceRepository {
     }
     
     public func createParty(_ dto: PartyDTO, completion: @escaping (Result<[PartyDTO], Error>) -> Void) {
-        DispatchQueue.global().async {
+        DispatchQueue.main.async {
             autoreleasepool {
                 let realmDTO = PartyRealmDTO(dto)
                 self.dataSource.create(realmDTO)
-                let data: [PartyDTO] = self.dataSource.retrieveAll()
-                    .compactMap { $0 as? PartyRealmDTO }
-                    .map { realmDTO -> PartyDTO in
-                        return PartyDTO(realmDTO)
-                    }
-                completion(.success(data))
+//                let data: [PartyDTO] = self.dataSource.retrieveAll()
+////                    .compactMap { $0 as? PartyRealmDTO }
+//                    .map { realmDTO -> PartyDTO in
+//                        return PartyDTO(realmDTO)
+//                    }
+//                completion(.success(data))
+            }
+        }
+    }
+    
+    public func updateParty(_ dto: PartyDTO, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            autoreleasepool {
+                let realmDTO = PartyRealmDTO(dto)
+                self.dataSource.update(realmDTO)
+                completion()
+            }
+        }
+    }
+    
+    public func updateMember(_ dto: MemberDTO, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            autoreleasepool {
+                let realmDTO = MemberRealmDTO(dto)
+                self.dataSource.update(realmDTO)
+                completion()
+            }
+        }
+    }
+    
+    public func removeMember(_ key: String, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            autoreleasepool {
+                self.dataSource.deleteMember(key: key)
+                completion()
+            }
+        }
+    }
+    
+    public func removeSpending(_ key: String, completion: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            autoreleasepool {
+                self.dataSource.deleteSpending(key: key)
+                completion()
             }
         }
     }

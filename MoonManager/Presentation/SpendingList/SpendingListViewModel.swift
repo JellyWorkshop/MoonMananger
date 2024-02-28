@@ -10,14 +10,14 @@ import Foundation
 
 public final class SpendingListViewModel: ViewModelable {
     enum Action {
-        case onAppear
+        case onAppear(_ id: String)
+        case removeSpending(partyID: String, spending: Spending)
     }
     
     private var subscriptions = Set<AnyCancellable>()
     private var spendingListUseCase: SpendingListUseCase
     var coordinator: CoordinatorProtocol
     
-    @Published var party: Party? = nil
     @Published var spendings: [Spending] = []
     
     public init(coordinator: CoordinatorProtocol, spendingListUseCase: SpendingListUseCase) {
@@ -28,19 +28,14 @@ public final class SpendingListViewModel: ViewModelable {
     
     func action(_ action: Action) {
         switch action {
-        case .onAppear:
-            spendingListUseCase.fetchParty()
+        case .onAppear(let id):
+            spendingListUseCase.fetchParty(id)
+        case .removeSpending(let partyID, let spending):
+            spendingListUseCase.removeSpending(partyID: partyID, spendingID: spending.id)
         }
     }
     
     func binding() {
-        spendingListUseCase.party
-            .sink { [weak self] party in
-                guard let self = self else { return }
-                self.party = party
-            }
-            .store(in: &subscriptions)
-        
         spendingListUseCase.spendings
             .sink { [weak self] spendings in
                 guard let self = self else { return }

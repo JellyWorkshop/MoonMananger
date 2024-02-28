@@ -11,8 +11,11 @@
 		262E6CF72B4F751C00AAB79D /* TotalSpending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262E6CF62B4F751C00AAB79D /* TotalSpending.swift */; };
 		268C97552B6CCE32000642F9 /* TotalMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268C97542B6CCE32000642F9 /* TotalMember.swift */; };
 		268C97572B6CD243000642F9 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268C97562B6CD243000642F9 /* Receipt.swift */; };
+		26C58B532B86EBEB00B4F757 /* AddSpendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C58B522B86EBEB00B4F757 /* AddSpendingView.swift */; };
 		26CFD9B02B706B9F0011E454 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CFD9AF2B706B9F0011E454 /* View+.swift */; };
 		26CFD9B22B706BC20011E454 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CFD9B12B706BC20011E454 /* UIView+.swift */; };
+		26DFD6BA2B7F37F90086970C /* ReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DFD6B92B7F37F90086970C /* ReceiptView.swift */; };
+		26DFD6BC2B7F385E0086970C /* PersonalReceiptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DFD6BB2B7F385E0086970C /* PersonalReceiptView.swift */; };
 		26E467652B63606200E40A4E /* AddPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E467642B63606200E40A4E /* AddPartyView.swift */; };
 		26E467672B63608600E40A4E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E467662B63608600E40A4E /* ImagePicker.swift */; };
 		26F7B9372B512BE10016705A /* SpendingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F7B9362B512BE10016705A /* SpendingListView.swift */; };
@@ -106,8 +109,11 @@
 		262E6CF62B4F751C00AAB79D /* TotalSpending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSpending.swift; sourceTree = "<group>"; };
 		268C97542B6CCE32000642F9 /* TotalMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalMember.swift; sourceTree = "<group>"; };
 		268C97562B6CD243000642F9 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		26C58B522B86EBEB00B4F757 /* AddSpendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendingView.swift; sourceTree = "<group>"; };
 		26CFD9AF2B706B9F0011E454 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		26CFD9B12B706BC20011E454 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		26DFD6B92B7F37F90086970C /* ReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptView.swift; sourceTree = "<group>"; };
+		26DFD6BB2B7F385E0086970C /* PersonalReceiptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalReceiptView.swift; sourceTree = "<group>"; };
 		26E467642B63606200E40A4E /* AddPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPartyView.swift; sourceTree = "<group>"; };
 		26E467662B63608600E40A4E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		26F7B9362B512BE10016705A /* SpendingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingListView.swift; sourceTree = "<group>"; };
@@ -121,7 +127,7 @@
 		3B29EE0A2B3E6BBC00D42BA2 /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		3B29EE0D2B3E738900D42BA2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3B29EE0F2B3E738F00D42BA2 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
-		3B29EE112B3E73BE00D42BA2 /* PartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyView.swift; sourceTree = "<group>"; };
+		3B29EE112B3E73BE00D42BA2 /* PartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyView.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		3B29EE132B3E73CD00D42BA2 /* PartyMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyMemberView.swift; sourceTree = "<group>"; };
 		3B9B77F42B3D513D0058CA94 /* MoonManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoonManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B9B77F72B3D513D0058CA94 /* MoonManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonManagerApp.swift; sourceTree = "<group>"; };
@@ -194,6 +200,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26013AD82B85D5D700342B6A /* SpendingList */ = {
+			isa = PBXGroup;
+			children = (
+				26F7B9362B512BE10016705A /* SpendingListView.swift */,
+				26F7B9382B512BF80016705A /* SpendingListViewModel.swift */,
+			);
+			path = SpendingList;
+			sourceTree = "<group>";
+		};
+		26DFD6BD2B7F393A0086970C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3B9B77F92B3D513D0058CA94 /* MainView.swift */,
+				3B9E24162B3EB99400C552D0 /* MainViewModel.swift */,
+				26E467642B63606200E40A4E /* AddPartyView.swift */,
+				26E467662B63608600E40A4E /* ImagePicker.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		26DFD6BE2B7F39510086970C /* Party */ = {
+			isa = PBXGroup;
+			children = (
+				3B29EE112B3E73BE00D42BA2 /* PartyView.swift */,
+				3B9E24122B3EB97A00C552D0 /* PartyViewModel.swift */,
+				26DFD6B92B7F37F90086970C /* ReceiptView.swift */,
+				26C58B522B86EBEB00B4F757 /* AddSpendingView.swift */,
+			);
+			path = Party;
+			sourceTree = "<group>";
+		};
+		26DFD6BF2B7F39610086970C /* PartyMember */ = {
+			isa = PBXGroup;
+			children = (
+				3B29EE132B3E73CD00D42BA2 /* PartyMemberView.swift */,
+				3B9E24142B3EB98B00C552D0 /* PartyMemberViewModel.swift */,
+				26DFD6BB2B7F385E0086970C /* PersonalReceiptView.swift */,
+			);
+			path = PartyMember;
+			sourceTree = "<group>";
+		};
 		3B1B3C222B6CE1E7008247B9 /* MoonManagerTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,16 +309,10 @@
 		3B29EE152B3E746E00D42BA2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				3B9B77F92B3D513D0058CA94 /* MainView.swift */,
-				3B9E24162B3EB99400C552D0 /* MainViewModel.swift */,
-				26E467642B63606200E40A4E /* AddPartyView.swift */,
-				26E467662B63608600E40A4E /* ImagePicker.swift */,
-				3B29EE112B3E73BE00D42BA2 /* PartyView.swift */,
-				3B9E24122B3EB97A00C552D0 /* PartyViewModel.swift */,
-				26F7B9362B512BE10016705A /* SpendingListView.swift */,
-				26F7B9382B512BF80016705A /* SpendingListViewModel.swift */,
-				3B29EE132B3E73CD00D42BA2 /* PartyMemberView.swift */,
-				3B9E24142B3EB98B00C552D0 /* PartyMemberViewModel.swift */,
+				26DFD6BD2B7F393A0086970C /* Main */,
+				26DFD6BE2B7F39510086970C /* Party */,
+				26DFD6BF2B7F39610086970C /* PartyMember */,
+				26013AD82B85D5D700342B6A /* SpendingList */,
 				3B9E24762B469E2600C552D0 /* CoordinatorProtocol.swift */,
 			);
 			path = Presentation;
@@ -377,8 +418,8 @@
 			children = (
 				3B9E241D2B3EBA0C00C552D0 /* MainUseCase.swift */,
 				3B9E241F2B3EBA1600C552D0 /* PartyUseCase.swift */,
-				26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */,
 				3B9E24212B3EBA2100C552D0 /* PartyMemberUseCase.swift */,
+				26F7B93A2B512C7C0016705A /* SpendingListUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -638,6 +679,7 @@
 				262E6CF72B4F751C00AAB79D /* TotalSpending.swift in Sources */,
 				26CFD9B02B706B9F0011E454 /* View+.swift in Sources */,
 				3B9E24132B3EB97A00C552D0 /* PartyViewModel.swift in Sources */,
+				26C58B532B86EBEB00B4F757 /* AddSpendingView.swift in Sources */,
 				3B9E24712B46980A00C552D0 /* DataAssembly.swift in Sources */,
 				3B9E24152B3EB98B00C552D0 /* PartyMemberViewModel.swift in Sources */,
 				3B9E241E2B3EBA0C00C552D0 /* MainUseCase.swift in Sources */,
@@ -653,6 +695,7 @@
 				3B9E24632B4539A300C552D0 /* PartyCreateDTO.swift in Sources */,
 				3BAF35B62B4BCAEC00FF3BB2 /* ServiceAssembly.swift in Sources */,
 				3B29EE142B3E73CD00D42BA2 /* PartyMemberView.swift in Sources */,
+				26DFD6BC2B7F385E0086970C /* PersonalReceiptView.swift in Sources */,
 				3B9E24202B3EBA1600C552D0 /* PartyUseCase.swift in Sources */,
 				3B9E24352B3EBDA200C552D0 /* DefaultPartyRepository.swift in Sources */,
 				3B9E243B2B3EBEF000C552D0 /* NotificationsName+.swift in Sources */,
@@ -679,6 +722,7 @@
 				3B9E24772B469E2600C552D0 /* CoordinatorProtocol.swift in Sources */,
 				3B9E24612B4537E000C552D0 /* Typealiases.swift in Sources */,
 				3B9E24322B3EBD1200C552D0 /* Spending.swift in Sources */,
+				26DFD6BA2B7F37F90086970C /* ReceiptView.swift in Sources */,
 				3B9E246F2B46972200C552D0 /* PresentationAssembly.swift in Sources */,
 				3B9B77F82B3D513D0058CA94 /* MoonManagerApp.swift in Sources */,
 				3B9E24172B3EB99400C552D0 /* MainViewModel.swift in Sources */,

@@ -27,32 +27,37 @@ public struct PresentationAssembly: Assembly {
             let useCase = resolver.resolve(PartyUseCase.self)!
             return PartyViewModel(coordinator: coordinator, partyUseCase: useCase)
         }
+        .inObjectScope(.graph)
         
         container.register(PartyView.self) { resolver, id in
             let viewModel = resolver.resolve(PartyViewModel.self)!
             return PartyView(viewModel: viewModel, id: id)
         }
+        .inObjectScope(.graph)
         
-        container.register(PartyMemberViewModel.self) { resolver, member in
-            let member: Member = member
-            let useCase = resolver.resolve(PartyMemberUseCase.self, argument: member)!
+        container.register(PartyMemberViewModel.self) { resolver in
+            let useCase = resolver.resolve(PartyMemberUseCase.self)!
             return PartyMemberViewModel(coordinator: coordinator, partyMemberUseCase: useCase)
-        }.inObjectScope(.graph)
+        }
+        .inObjectScope(.graph)
         
-        container.register(PartyMemberView.self) { resolver, member in
-            let member: Member = member
-            let viewModel = resolver.resolve(PartyMemberViewModel.self, argument: member)!
-            return PartyMemberView(viewModel: viewModel, member: member)
-        }.inObjectScope(.graph)
+        container.register(PartyMemberView.self) { resolver, data in
+            let data: (String, String) = data
+            let viewModel = resolver.resolve(PartyMemberViewModel.self)!
+            return PartyMemberView(viewModel: viewModel, partyID: data.0, memberID: data.1)
+        }
+        .inObjectScope(.graph)
         
         container.register(SpendingListViewModel.self) { resolver in
             let useCase = resolver.resolve(SpendingListUseCase.self)!
             return SpendingListViewModel(coordinator: coordinator, spendingListUseCase: useCase)
         }
+        .inObjectScope(.graph)
         
-        container.register(SpendingListView.self) { resolver in
+        container.register(SpendingListView.self) { resolver, id in
             let viewModel = resolver.resolve(SpendingListViewModel.self)!
-            return SpendingListView(viewModel: viewModel)
+            return SpendingListView(viewModel: viewModel, id: id)
         }
+        .inObjectScope(.graph)
     }
 }

@@ -10,17 +10,12 @@ import Foundation
 
 public protocol SpendingListUseCase {
     var spendings: AnyPublisher<[Spending], Never> { get }
-    func fetchSpendings()
-    var party: AnyPublisher<Party?, Never> { get }
-    func fetchParty()
+    func fetchParty(_ partyID: String)
+    func removeSpending(partyID: String, spendingID: String)
 }
 
 public final class DefaultSpendingListUseCase: SpendingListUseCase {
     private let partyRepository: PartyServiceRepository
-    private var partySubject = CurrentValueSubject<Party?, Never>(nil)
-    public var party: AnyPublisher<Party?, Never> {
-        return partySubject.eraseToAnyPublisher()
-    }
     private var spendingSubject = CurrentValueSubject<[Spending], Never>([])
     public var spendings: AnyPublisher<[Spending], Never> {
         return spendingSubject.eraseToAnyPublisher()
@@ -30,27 +25,22 @@ public final class DefaultSpendingListUseCase: SpendingListUseCase {
         self.partyRepository = partyRepository
     }
     
-    public func fetchSpendings() {
-        partyRepository.retrieveSpending { result in
+    public func fetchParty(_ partyID: String) {
+        partyRepository.retrieveParty(id: partyID) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let data):
-                spendingSubject.send(
-                    data.map { Spending(DTO: $0) }
-                )
+                let party = Party(DTO: data)
+                self.spendingSubject.send(party.spendings)
             case .failure(let error):
                 print(error)
             }
         }
     }
     
-    public func fetchParty() {
-        partyRepository.retrieveParty { result in
-            switch result {
-            case .success(let data):
-                partySubject.send(Party(DTO: data))
-            case .failure(let error):
-                print(error)
-            }
+    public func removeSpending(partyID: String, spendingID: String) {
+        self.partyRepository.removeSpending(spendingID) {
+            self.fetchParty(partyID)
         }
     }
 }

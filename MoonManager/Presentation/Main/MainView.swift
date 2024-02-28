@@ -35,7 +35,7 @@ struct MainView: View {
             }
             .padding(.vertical, 10)
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: partyColumns, spacing: 16) {
                     ForEach(viewModel.partyList) { info in
                         VStack {

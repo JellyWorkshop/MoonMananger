@@ -45,12 +45,12 @@ public class Coordinator: ObservableObject, CoordinatorProtocol {
         switch scene {
         case .main:
             injector?.resolve(MainView.self)
-        case .party(let id):
-            injector?.resolve(PartyView.self, argument: id)
-        case .partyMember(let member):
-            injector?.resolve(PartyMemberView.self, argument: member)
+        case .party(let party):
+            injector?.resolve(PartyView.self, argument: party)
+        case .partyMember(let partyID, let memberID):
+            injector?.resolve(PartyMemberView.self, argument: (partyID, memberID))
         case .spendingList(let id):
-            injector?.resolve(SpendingListView.self)
+            injector?.resolve(SpendingListView.self, argument: id)
         }
     }
 }
