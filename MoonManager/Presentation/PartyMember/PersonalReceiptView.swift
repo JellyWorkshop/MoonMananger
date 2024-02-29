@@ -28,7 +28,7 @@ struct PersonalReceiptView: View {
                                 .fontWeight(.black)
                             
                             HStack(spacing: 5) {
-                                Text(viewModel.party?.name ?? "")
+                                Text(viewModel.party.name)
                                     .font(.system(size: 12))
                                     .foregroundStyle(.gray)
                                 
@@ -95,82 +95,79 @@ struct PersonalReceiptView: View {
                     }
                     .padding(.top, 10)
                     .padding(.bottom, 10)
-                    
-                    if let receipt = viewModel.receipt {
-                        VStack(alignment: .leading, spacing: 5) {
-                            ForEach(receipt.totalMember) { info in
-                                if receipt.manager.id == viewModel.member.id {
-                                    HStack(alignment: .center, spacing: 2) {
-                                        if info.cost < 0 {
-                                            Spacer()
-                                            
-                                            HStack(spacing: 0) {
-                                                Text("\(info.member.name)")
-                                                    .fontWeight(.bold)
-                                                Text("님께")
-                                            }
-                                            
-                                            Text("\(abs(info.cost))원")
+                    VStack(alignment: .leading, spacing: 5) {
+                        ForEach(viewModel.receipt.totalMember) { info in
+                            if viewModel.receipt.manager.id == viewModel.member.id {
+                                HStack(alignment: .center, spacing: 2) {
+                                    if info.cost < 0 {
+                                        Spacer()
+                                        
+                                        HStack(spacing: 0) {
+                                            Text("\(info.member.name)")
                                                 .fontWeight(.bold)
-                                            Text("보내주세요💎")
-                                        } else {
+                                            Text("님께")
+                                        }
+                                        
+                                        Text("\(abs(info.cost))원")
+                                            .fontWeight(.bold)
+                                        Text("보내주세요💎")
+                                    } else {
+                                        Spacer()
+                                        
+                                        HStack(spacing: 0) {
+                                            Text("\(info.member.name)")
+                                                .fontWeight(.bold)
+                                            Text("님께")
+                                        }
+                                        
+                                        Text("\(info.cost)원")
+                                            .fontWeight(.bold)
+                                        Text("받으세요💎")
+                                    }
+                                }
+                                .font(.system(size: 12))
+                                .padding(.bottom, 5)
+                                
+                            } else if info.member.id == viewModel.member.id {
+                                if info.cost != 0 {
+                                    HStack(alignment: .center, spacing: 2) {
+                                        if info.cost > 0 {
                                             Spacer()
                                             
                                             HStack(spacing: 0) {
-                                                Text("\(info.member.name)")
+                                                Text("\(viewModel.receipt.manager.name)")
                                                     .fontWeight(.bold)
                                                 Text("님께")
                                             }
                                             
                                             Text("\(info.cost)원")
                                                 .fontWeight(.bold)
+                                            Text("보내주세요💎")
+                                        } else {
+                                            Spacer()
+                                            
+                                            HStack(spacing: 0) {
+                                                Text("\(viewModel.receipt.manager.name)")
+                                                    .fontWeight(.bold)
+                                                Text("님께")
+                                            }
+                                            
+                                            Text("\(abs(info.cost))원")
+                                                .fontWeight(.bold)
                                             Text("받으세요💎")
                                         }
                                     }
                                     .font(.system(size: 12))
                                     .padding(.bottom, 5)
-                                    
-                                } else if info.member.id == viewModel.member.id {
-                                    if info.cost != 0 {
-                                        HStack(alignment: .center, spacing: 2) {
-                                            if info.cost > 0 {
-                                                Spacer()
-                                                
-                                                HStack(spacing: 0) {
-                                                    Text("\(receipt.manager.name)")
-                                                        .fontWeight(.bold)
-                                                    Text("님께")
-                                                }
-                                                
-                                                Text("\(info.cost)원")
-                                                    .fontWeight(.bold)
-                                                Text("보내주세요💎")
-                                            } else {
-                                                Spacer()
-                                                
-                                                HStack(spacing: 0) {
-                                                    Text("\(receipt.manager.name)")
-                                                        .fontWeight(.bold)
-                                                    Text("님께")
-                                                }
-                                                
-                                                Text("\(abs(info.cost))원")
-                                                    .fontWeight(.bold)
-                                                Text("받으세요💎")
-                                            }
-                                        }
-                                        .font(.system(size: 12))
-                                        .padding(.bottom, 5)
-                                    }
                                 }
                             }
-                            
-                            Text("*총무가 모든 금액을 받고 따로 결제한 건에 대해 다시 전달해줘요!")
-                                .foregroundStyle(.gray)
-                                .font(.system(size: 10))
                         }
-                        .padding(.bottom, 10)
+                        
+                        Text("*총무가 모든 금액을 받고 따로 결제한 건에 대해 다시 전달해줘요!")
+                            .foregroundStyle(.gray)
+                            .font(.system(size: 10))
                     }
+                    .padding(.bottom, 10)
                 }
                 .padding(.horizontal, 20)
                 .background(

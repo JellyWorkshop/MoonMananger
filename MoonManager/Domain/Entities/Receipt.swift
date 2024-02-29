@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Receipt: Identifiable {
+public struct Receipt: Identifiable, Hashable {
     public var id: String
     public var manager: Member
     public var totalMember: [TotalMember]
@@ -20,32 +20,3 @@ public struct Receipt: Identifiable {
         self.totalMember = totalMember
     }
 }
-
-public struct TotalReceipt {
-    var manager: Member
-    var spending: [Spending]
-    var receipts: [Receipts]
-}
-
-public struct Receipts {
-    var settler: Member
-    var joined: [Spending]
-    var shouldPaidAmount: Int
-    var paidForAmount: Int
-    var directions: [SettlementDirection]
-}
-
-public struct SettlementDirection {
-    var type: DirectionType
-    var from: Member
-    var to: Member
-    var ammount: Int
-}
-
-public enum DirectionType {
-    /// 환급
-    case refund
-    /// 송금
-    case send
-}
-

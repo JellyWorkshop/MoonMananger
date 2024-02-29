@@ -160,7 +160,7 @@ struct PartyView: View {
                                         .opacity(0.04)
                                 )
                                 .onTapGesture {
-                                    viewModel.action(.showMember(partyID: partyID, memberID: info.id))
+                                    viewModel.action(.showMember(member: info))
                                 }
                                 .simultaneousGesture(LongPressGesture(minimumDuration: 0.5).onEnded { _ in
                                     print("### onLongPressGesture \(info.name)")

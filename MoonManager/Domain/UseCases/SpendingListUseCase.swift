@@ -9,9 +9,8 @@ import Combine
 import Foundation
 
 public protocol SpendingListUseCase {
-    var spendings: AnyPublisher<[Spending], Never> { get }
-    func fetchParty(_ partyID: String)
-    func removeSpending(partyID: String, spendingID: String)
+    func getSpendingList(partyID id: String, completion: @escaping (Result<[Spending], Error>) -> Void)
+    func removeSpending(spendingID id: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 public final class DefaultSpendingListUseCase: SpendingListUseCase {
@@ -25,22 +24,21 @@ public final class DefaultSpendingListUseCase: SpendingListUseCase {
         self.partyRepository = partyRepository
     }
     
-    public func fetchParty(_ partyID: String) {
-        partyRepository.retrieveParty(id: partyID) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                let party = Party(DTO: data)
-                self.spendingSubject.send(party.spendings)
-            case .failure(let error):
-                print(error)
+    public func getSpendingList(partyID id: String, completion: @escaping (Result<[Spending], Error>) -> Void) {
+        partyRepository.retrieveParty(
+            id,
+            completion: { result in
+                switch result {
+                case .success(let party):
+                    completion(.success(party.spendings))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
-        }
+        )
     }
     
-    public func removeSpending(partyID: String, spendingID: String) {
-        self.partyRepository.removeSpending(spendingID) {
-            self.fetchParty(partyID)
-        }
+    public func removeSpending(spendingID id: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        partyRepository.removeSpending(id, completion: completion)
     }
 }

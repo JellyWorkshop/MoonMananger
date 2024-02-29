@@ -19,12 +19,3 @@ public struct Member: Identifiable, Hashable {
         self.name = name
     }
 }
-
-extension Member: Convertable {
-    typealias E = MemberDTO
-    
-    init(DTO: MemberDTO) {
-        self.id = DTO.id
-        self.name = DTO.name
-    }
-}

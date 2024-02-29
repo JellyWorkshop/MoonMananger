@@ -34,6 +34,18 @@ public class SpendingDTO: Codable {
     }
 }
 
+extension SpendingDTO {
+    var domain: Spending {
+        Spending(
+            id: self.id,
+            title: self.title,
+            cost: self.cost,
+            manager: self.manager?.doamin ?? Member(),
+            members: self.members.map { $0.doamin }
+        )
+    }
+}
+
 public class SpendingRealmDTO: Object {
     @Persisted(primaryKey: true) public var id: String
     @Persisted public var title: String

@@ -7,13 +7,15 @@
 
 import Foundation
 import Swinject
+import RealmSwift
 
 public struct DataAssembly: Assembly {
     
     public func assemble(container: Container) {
+        
         container.register(PartyServiceRepository.self) { resolver in
-            let dataSource = resolver.resolve(RealmDataSourceInterface.self)!
-            return DefaultPartyServiceRepository(dataSource: dataSource)
+            let realm = resolver.resolve(Realm.self)!
+            return RealmPartyRepository(realm: realm)
         }
     }
 }

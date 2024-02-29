@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TotalMember: Identifiable {
+public struct TotalMember: Identifiable, Hashable {
     public var id: String
     public var member: Member
     public var cost: Int

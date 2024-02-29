@@ -24,26 +24,40 @@ public final class MainViewModel: ViewModelable {
     public init(coordinator: CoordinatorProtocol, mainUseCase: MainUseCase) {
         self.coordinator = coordinator
         self.mainUseCase = mainUseCase
-        self.binding()
     }
     
     func action(_ action: Action) {
         switch action {
         case .onAppear:
-            mainUseCase.fetchPartyList()
+            self.getParty()
         case .showParty(let id):
             coordinator.push(.party(id: id))
         case .createParty(let party):
-            mainUseCase.createParty(party)
+            self.addParty(party: party)
+        }
+    }
+}
+
+extension MainViewModel {
+    func getParty() {
+        mainUseCase.fetchPartyList { result in
+            switch result {
+            case .success(let list):
+                self.partyList = list
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
-    func binding() {
-        mainUseCase.partyList
-            .sink { [weak self] partyList in
-                guard let self = self else { return }
-                self.partyList = partyList
+    func addParty(party: Party) {
+        mainUseCase.createParty(party) { result in
+            switch result {
+            case .success:
+                break
+            case .failure(let error):
+                print(error)
             }
-            .store(in: &subscriptions)
+        }
     }
 }

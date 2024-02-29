@@ -16,14 +16,8 @@ struct PartyMemberView: View {
         
     let segments: [String] = ["참여했어요", "결제했어요"]
     
-    var partyID: String = ""
-    var memberID: String = ""
-    
-    init(viewModel: PartyMemberViewModel, partyID: String, memberID: String) {
+    init(viewModel: PartyMemberViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
-//        self.viewModel.action(.onAppear(member: member))
-        self.partyID = partyID
-        self.memberID = memberID
     }
     
     var body: some View {
@@ -247,7 +241,7 @@ struct PartyMemberView: View {
             .padding(0.1)
             .onAppear {
                 print("PartyMemberView onAppear")
-                self.viewModel.action(.onAppear(partyID: partyID, memberID: memberID))
+                self.viewModel.action(.onAppear)
             }
             
             if checkReceipt {

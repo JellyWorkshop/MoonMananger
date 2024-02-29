@@ -23,6 +23,15 @@ public class MemberDTO: Codable {
     }
 }
 
+extension MemberDTO {
+    var doamin: Member {
+        Member(
+            id: self.id,
+            name: self.name
+        )
+    }
+}
+
 public class MemberRealmDTO: Object {
     @Persisted(primaryKey: true) public var id: String
     @Persisted public var name: String

@@ -10,6 +10,6 @@ import SwiftUI
 public enum Destination: Hashable {
     case main
     case party(id: String)
-    case partyMember(partyID: String, memberID: String)
+    case partyMember(party: Party, member: Member, receipt: Receipt)
     case spendingList(id: String)
 }

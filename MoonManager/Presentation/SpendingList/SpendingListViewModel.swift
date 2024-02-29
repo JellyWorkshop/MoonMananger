@@ -23,24 +23,47 @@ public final class SpendingListViewModel: ViewModelable {
     public init(coordinator: CoordinatorProtocol, spendingListUseCase: SpendingListUseCase) {
         self.coordinator = coordinator
         self.spendingListUseCase = spendingListUseCase
-        self.binding()
     }
     
     func action(_ action: Action) {
         switch action {
         case .onAppear(let id):
-            spendingListUseCase.fetchParty(id)
+            getSpendingList(partyID: id)
         case .removeSpending(let partyID, let spending):
-            spendingListUseCase.removeSpending(partyID: partyID, spendingID: spending.id)
+            removeSpending(paryID: partyID, spendingID: spending.id)
         }
     }
-    
-    func binding() {
-        spendingListUseCase.spendings
-            .sink { [weak self] spendings in
+}
+
+extension SpendingListViewModel {
+    func getSpendingList(partyID: String) {
+        spendingListUseCase.getSpendingList(
+            partyID: partyID,
+            completion: { [weak self] result in
                 guard let self = self else { return }
-                self.spendings = spendings
+                switch result {
+                case .success(let spendings):
+                    self.spendings = spendings
+                case .failure(let error):
+                    print(error)
+                }
             }
-            .store(in: &subscriptions)
+        )
+    }
+    
+    func removeSpending(paryID: String, spendingID: String) {
+        spendingListUseCase.removeSpending(
+            spendingID: spendingID,
+            completion: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    self.getSpendingList(partyID: paryID)
+                    print("success removeSpending")
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        )
     }
 }

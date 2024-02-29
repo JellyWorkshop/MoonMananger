@@ -29,11 +29,46 @@ public class PartyDTO: Codable {
         self.image = image
     }
     
+    public init (party: Party) {
+        self.id = party.id
+        self.name = party.name
+        self.members = party.members.map{
+            MemberDTO(id: $0.id, name: $0.name)
+        }
+        self.spendings = party.spendings.map{
+            SpendingDTO(
+                id: $0.id,
+                title: $0.title,
+                cost: $0.cost,
+                manager: MemberDTO(
+                    id: $0.manager.id,
+                    name: $0.manager.name
+                ),
+                members: $0.members.map {
+                    MemberDTO(id: $0.id, name: $0.name)
+                }
+            )
+        }
+        self.image = party.image
+    }
+    
     public init(_ realmDTO: PartyRealmDTO) {
         self.id = realmDTO.id
         self.name = realmDTO.name
         self.members = realmDTO.members.map { MemberDTO($0) }
         self.spendings = realmDTO.spendings.map { SpendingDTO($0) }
+    }
+}
+
+extension PartyDTO {
+    var domain: Party {
+        Party(
+            id: self.id,
+            name: self.name,
+            members: self.members.map { $0.doamin },
+            spendings: self.spendings.map { $0.domain },
+            image: self.image
+        )
     }
 }
 

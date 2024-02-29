@@ -35,16 +35,25 @@ public struct PresentationAssembly: Assembly {
         }
         .inObjectScope(.graph)
         
-        container.register(PartyMemberViewModel.self) { resolver in
-            let useCase = resolver.resolve(PartyMemberUseCase.self)!
-            return PartyMemberViewModel(coordinator: coordinator, partyMemberUseCase: useCase)
+        container.register(PartyMemberViewModel.self) { resolver, party, member, receipt in
+            return PartyMemberViewModel(
+                party: party,
+                member: member,
+                receipt: receipt,
+                coordinator: coordinator
+            )
         }
         .inObjectScope(.graph)
         
-        container.register(PartyMemberView.self) { resolver, data in
-            let data: (String, String) = data
-            let viewModel = resolver.resolve(PartyMemberViewModel.self)!
-            return PartyMemberView(viewModel: viewModel, partyID: data.0, memberID: data.1)
+        container.register(PartyMemberView.self) { resolver, party, member, receipt in
+            let party: Party = party
+            let member: Member = member
+            let receipt: Receipt = receipt
+            let viewModel = resolver.resolve(
+                PartyMemberViewModel.self,
+                arguments: party, member, receipt
+            )!
+            return PartyMemberView(viewModel: viewModel)
         }
         .inObjectScope(.graph)
         
